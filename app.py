@@ -168,8 +168,13 @@ def sendTextMessageToMe():
 def getNameEmojiMessage():
     lookUpStr = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
     productId = "5ac21a8c040ab15980c9b43f"
-    name = ""
-    message = dict()
+    name = "$$$$$"
+    emojis = [{"index":0 ,"productId":productId ,"emojiId":"010"},
+              {"index":1 ,"productId":productId ,"emojiId":"035"},
+              {"index":2 ,"productId":productId ,"emojiId":"039"},
+              {"index":3 ,"productId":productId ,"emojiId":"039"},
+              {"index":4 ,"productId":productId ,"emojiId":"051"}]
+    message = {"type":"text" , "text":name , "emojis":emojis}
     return message
 
 
