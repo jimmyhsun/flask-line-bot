@@ -244,7 +244,7 @@ def getTodayCovid19Message():
     date = response.json()[0]["a04"]
     total_count = response.json()[0]["a05"]
     count = response.json()[0]["a06"]
-    return F"日期：{date}, 人數：{count}, 確診總人數：{total_count}"
+    return F"日期：{date}, 新增確診人數：{count}, 確診總人數：{total_count}"
 
 
 def allowed_file(filename):
