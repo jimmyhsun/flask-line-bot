@@ -50,7 +50,8 @@ def index():
                     payload["messages"] = [getPlayStickerMessage()]
                 elif text == "台北101圖":
                     payload["messages"] = [getTaipei101ImageMessage()]
-
+                elif text == "台北101影片":
+                    payload["messages"] = [getMRTVideoMessage()]
                 elif text == "台北101":
                     payload["messages"] = [getTaipei101ImageMessage(),
                                             getTaipei101LocationMessage(),
