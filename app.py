@@ -188,17 +188,15 @@ def getCarouselMessage(data):
 
 
 def getLocationConfirmMessage(title, latitude, longitude):
-    message = {
-                "type": "template",
+    message = {"type": "template",
                 "altText": "this is a confirm template",
                 "template": {
                     "type": "confirm",
-                    "text": "Are you sure?",
-                    "actions": [
-                            { "type": "message", "label": "Yes","text": "yes" },
-                            {"type": "message","label": "No","text": "no"}]
+                    "text": f"確認是否搜尋{title}附近地點？",
+                    "actions": [{"type": "message", "label": "是", "text": "是"},
+                                {"type": "message", "label": "否", "text": "否"}]
                         }
-            }
+              }
     return message
 
 
