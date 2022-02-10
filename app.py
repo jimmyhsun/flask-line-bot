@@ -194,12 +194,12 @@ def getCallCarMessage(data):
 
 
 def getPlayStickerMessage():
-    message = dict()
+    message = {"type": "sticker", "packageId": "446", "stickerId": "1990"}
     return message
 
 
 def getTaipei101LocationMessage():
-    message = {"type": "sticker", "packageId": "446", "stickerId": "1990"}
+    message = dict()
     return message
 
 
