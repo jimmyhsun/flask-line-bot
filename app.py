@@ -199,7 +199,7 @@ def getPlayStickerMessage():
 
 
 def getTaipei101LocationMessage():
-    message = dict()
+    message = {"type": "sticker", "packageId": "446", "stickerId": "1990"}
     return message
 
 
