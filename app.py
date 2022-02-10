@@ -183,7 +183,39 @@ def getNameEmojiMessage():
 
 
 def getCarouselMessage(data):
-    message = dict()
+    message = {
+          "type": "template",
+          "altText": "this is a image carousel template",
+          "template": {
+              "type": "image_carousel",
+              "columns": [
+                  {
+                    "imageUrl": F"{end_point}/static/taipei_101.jpeg",
+                    "action": {
+                      "type": "postback",
+                      "label": "台北101",
+                      "data": "action=buy&itemid=111"
+                    }
+                  },
+                  {
+                    "imageUrl": F"{end_point}/static/taipei_1.jpeg",
+                    "action": {
+                      "type": "postback",
+                      "label": "台北101",
+                      "text": "台北101"
+                    }
+                  }
+                  # {
+                  #   "imageUrl": "https://example.com/bot/images/item3.jpg",
+                  #   "action": {
+                  #     "type": "uri",
+                  #     "label": "View detail",
+                  #     "uri": "http://example.com/page/222"
+                  #   }
+                  # }
+              ]
+          }
+        }
     return message
 
 
@@ -194,9 +226,9 @@ def getLocationConfirmMessage(title, latitude, longitude):
                 "template": {
                     "type": "confirm",
                     "text": f"確認是否搜尋{title}附近地點？",
-                    "actions": [{"type":"postback",
-                                "label":"是",
-                                "data":json.dumps(data)},
+                    "actions": [{"type": "postback",
+                                "label": "是",
+                                "data": json.dumps(data)},
                                 {"type": "message", "label": "否", "text": "否"}]
                         }
               }
