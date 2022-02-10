@@ -173,6 +173,7 @@ def getNameEmojiMessage():
               {"index":1 ,"productId":productId ,"emojiId":"035"},
               {"index":2 ,"productId":productId ,"emojiId":"039"},
               {"index":3 ,"productId":productId ,"emojiId":"039"},
+              {"index":4 ,"productId":productId ,"emojiId":"051"},
               {"index":4 ,"productId":productId ,"emojiId":"051"}]
     message = {"type":"text" , "text":name , "emojis":emojis}
     return message
