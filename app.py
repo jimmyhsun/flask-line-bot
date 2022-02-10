@@ -202,7 +202,7 @@ def getCarouselMessage(data):
                     "action": {
                       "type": "postback",
                       "label": "台北101",
-                      "text": "台北101"
+                      "data": "action=buy&itemid=111"
                     }
                   }
                   # {
