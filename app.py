@@ -244,7 +244,7 @@ def getCallCarMessage(data):
                     "actions": [{"type": "datetimepicker",
                                 "label": "預約",
                                 "data": json.dumps(data),
-                                "mode":"datatime"}
+                                "mode":"datetime"}
                                 ]
                         }
               }
