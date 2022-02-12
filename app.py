@@ -173,7 +173,7 @@ def getNameEmojiMessage():
     message={"type":"carousel",
              "contents": [{"type": "bubble",
                            "hero":{"type":"image","url":F"{end_point}/static/quality.jpg","size":"full","aspectMode":"cover"},
-                            "body":{"type":"box","layout":"vertical","contents":[{"type":"text","text":"甜不辣","size":"xl","weight":"bold"},
+                            "body":{"type":"box","layout":"vertical","contents":[{"type":"text","text":"甜不辣","size":"xl"},
                                                                                  {"type":"box","layout":"vertical","contents":[{"type":"box","layout":"vertical","contents":{"type":"text","text":"熱量 : 153大卡"},"size":"m"},
                                                                                                                                 {"type":"box","layout":"vertical","contents":{"type":"text","text":"金額 : 153元"}}]
                                                                                   }]}
