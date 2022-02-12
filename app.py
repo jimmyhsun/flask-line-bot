@@ -44,7 +44,7 @@ def index():
             if events[0]["message"]["type"] == "text":
                 text = events[0]["message"]["text"]
 
-                if text == "我的名字":
+                if text == "菜單":
                     payload["messages"] = [getNameEmojiMessage()]
                 elif text == "出去玩囉":
                     payload["messages"] = [getPlayStickerMessage()]
@@ -170,15 +170,15 @@ def sendTextMessageToMe():
 
 
 def getNameEmojiMessage():
-    lookUpStr = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
-    productId = "5ac21a8c040ab15980c9b43f"
-    name = "$$$$$"
-    emojis = [{"index":0 ,"productId":productId ,"emojiId":"010"},
-              {"index":1 ,"productId":productId ,"emojiId":"035"},
-              {"index":2 ,"productId":productId ,"emojiId":"039"},
-              {"index":3 ,"productId":productId ,"emojiId":"039"},
-              {"index":4 ,"productId":productId ,"emojiId":"051"}]
-    message = {"type":"text" , "text":name , "emojis":emojis}
+    message={"type":"carousel",
+             "contents": [{"type": "bubble",
+                           "hero":{"type":"image","url":F"{end_point}/static/quality.png","size":"full","aspectRatio":"20:13","aspectMode":"cover"},
+                            "body":{"type":"box","layout":"vertical","contents":[{"type":"text","text":"甜不辣","size":"xl","weight":"bold"},
+                                                                                 {"type":"box","layout":"vertical","contents":[{"type":"box","layout":"baseline","contents":{"type":"text","text":"熱量 : 153大卡"},"size":"m"},
+                                                                                                                                {"type":"box","layout":"baseline","contents":{"type":"text","text":"金額 : 153元"}}]
+                                                                                  }]}
+                           }]
+            }
     return message
 
 
