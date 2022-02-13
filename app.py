@@ -172,7 +172,7 @@ def sendTextMessageToMe():
 def getNameEmojiMessage():
     message={"type": "template","altText": "this is a carousel template","template": {
              "type":"carousel",
-             "columns": [{"type": "bubble",
+             "contents": [{"type": "bubble",
                            "hero":{"type":"image","url":F"{end_point}/static/quality.jpg","size":"full","aspectRatio": "20:13","aspectMode":"cover"},
                             "body":{"type":"box","layout":"vertical","contents":[{"type":"text","text":"甜不辣","weight": "bold","size": "xl"},
                                                                                  {"type":"box","layout":"vertical","margin": "lg","spacing": "sm","contents":[{"type":"text","text":"熱量 : 153大卡","color": "#666666", "size": "xxl","flex": 5}]},
