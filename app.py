@@ -182,50 +182,78 @@ def getNameEmojiMessage():
               "body": {
                 "type": "box",
                 "layout": "vertical",
+                "spacing": "md",
                 "contents": [
                   {
                     "type": "text",
                     "text": "甜不辣",
-                    "weight": "bold",
-                    "size": "xl"
+                    "size": "3xl",
+                    "weight": "bold"
                   },
                   {
                     "type": "box",
                     "layout": "vertical",
-                    "margin": "lg",
                     "spacing": "sm",
                     "contents": [
                       {
                         "type": "box",
                         "layout": "baseline",
-                        "spacing": "sm",
                         "contents": [
                           {
                             "type": "text",
-                            "text": "熱量 : 144大卡",
-                            
-                            "color": "#666666",
-                            "size": "xxl",
-                            "flex": 5
+                            "text": "價錢",
+                            "weight": "bold",
+                            "margin": "sm",
+                            "flex": 0,
+                            "size": "lg"
+                          },
+                          {
+                            "type": "text",
+                            "text": "30元",
+                            "size": "lg",
+                            "align": "end",
+                            "color": "#aaaaaa"
                           }
                         ]
                       },
                       {
                         "type": "box",
                         "layout": "baseline",
-                        "spacing": "sm",
                         "contents": [
                           {
                             "type": "text",
-                            "text": "價錢 : 144元",
-                            
-                            "color": "#666666",
-                            "size": "xxl",
-                            "flex": 5
+                            "text": "熱量",
+                            "weight": "bold",
+                            "margin": "sm",
+                            "flex": 0,
+                            "size": "lg"
+                          },
+                          {
+                            "type": "text",
+                            "text": "550kcl",
+                            "size": "lg",
+                            "align": "end",
+                            "color": "#aaaaaa"
                           }
                         ]
                       }
                     ]
+                  }
+                ]
+              },
+              "footer": {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "button",
+                    "style": "primary",
+                    "color": "#905c44",
+                    "action": {
+                      "type": "postback",
+                      "label": "加入購物車",
+                      "data": "hello"
+                    }
                   }
                 ]
               }
