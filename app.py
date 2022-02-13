@@ -171,64 +171,67 @@ def sendTextMessageToMe():
 
 def getNameEmojiMessage():
     message={
-  "type": "bubble",
-  "hero": {
-    "type": "image",
-    "url": "https://student04.herokuapp.com/static/quality.jpg",
-    "size": "full",
-    "aspectRatio": "20:13",
-    "aspectMode": "cover"
-  },
-  "body": {
-    "type": "box",
-    "layout": "vertical",
-    "contents": [
-      {
-        "type": "text",
-        "text": "甜不辣",
-        "weight": "bold",
-        "size": "xl"
-      },
-      {
+  "type": "carousel",
+  "contents": [
+    {
+      "type": "bubble",
+      "body": {
         "type": "box",
-        "layout": "vertical",
-        "margin": "lg",
-        "spacing": "sm",
+        "layout": "horizontal",
         "contents": [
           {
-            "type": "box",
-            "layout": "baseline",
-            "spacing": "sm",
-            "contents": [
-              {
-                "type": "text",
-                "text": "熱量 : 144大卡",
-                "wrap": true,
-                "color": "#666666",
-                "size": "xxl",
-                "flex": 5
-              }
-            ]
-          },
+            "type": "text",
+            "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+            "wrap": true
+          }
+        ]
+      },
+      "footer": {
+        "type": "box",
+        "layout": "horizontal",
+        "contents": [
           {
-            "type": "box",
-            "layout": "baseline",
-            "spacing": "sm",
-            "contents": [
-              {
-                "type": "text",
-                "text": "價錢 : 144元",
-                "wrap": true,
-                "color": "#666666",
-                "size": "xxl",
-                "flex": 5
-              }
-            ]
+            "type": "button",
+            "style": "primary",
+            "action": {
+              "type": "uri",
+              "label": "Go",
+              "uri": "https://example.com"
+            }
           }
         ]
       }
-    ]
-  }
+    },
+    {
+      "type": "bubble",
+      "body": {
+        "type": "box",
+        "layout": "horizontal",
+        "contents": [
+          {
+            "type": "text",
+            "text": "Hello, World!",
+            "wrap": true
+          }
+        ]
+      },
+      "footer": {
+        "type": "box",
+        "layout": "horizontal",
+        "contents": [
+          {
+            "type": "button",
+            "style": "primary",
+            "action": {
+              "type": "uri",
+              "label": "Go",
+              "uri": "https://example.com"
+            }
+          }
+        ]
+      }
+    }
+  ]
 }
     return message
 
