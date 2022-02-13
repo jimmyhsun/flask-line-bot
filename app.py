@@ -170,8 +170,66 @@ def sendTextMessageToMe():
 
 
 def getNameEmojiMessage():
-    message={"type":"text","text":"coolme"}
-  
+    message={
+              "type": "bubble",
+              "hero": {
+                "type": "image",
+                "url": "https://student04.herokuapp.com/static/quality.jpg",
+                "size": "full",
+                "aspectRatio": "20:13",
+                "aspectMode": "cover"
+              },
+              "body": {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": "甜不辣",
+                    "weight": "bold",
+                    "size": "xl"
+                  },
+                  {
+                    "type": "box",
+                    "layout": "vertical",
+                    "margin": "lg",
+                    "spacing": "sm",
+                    "contents": [
+                      {
+                        "type": "box",
+                        "layout": "baseline",
+                        "spacing": "sm",
+                        "contents": [
+                          {
+                            "type": "text",
+                            "text": "熱量 : 144大卡",
+                            
+                            "color": "#666666",
+                            "size": "xxl",
+                            "flex": 5
+                          }
+                        ]
+                      },
+                      {
+                        "type": "box",
+                        "layout": "baseline",
+                        "spacing": "sm",
+                        "contents": [
+                          {
+                            "type": "text",
+                            "text": "價錢 : 144元",
+                            
+                            "color": "#666666",
+                            "size": "xxl",
+                            "flex": 5
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
     return message
 
 
