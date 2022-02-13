@@ -212,7 +212,7 @@ def getNameEmojiMessage():
                     "action": {
                       "type": "postback",
                       "label": "加入購物車",
-                      "data": car.append("30")
+                      "data": "cool"
                     }}]}}
     two={"type": "bubble",
          "hero": {"type": "image",
@@ -255,7 +255,7 @@ def getNameEmojiMessage():
                     "action": {
                       "type": "postback",
                       "label": "加入購物車",
-                      "data": car.append("40")
+                      "data": "lsasdasd"
                     }}]}}
     message = {"type": "flex", "altText": "Flex Message", "contents": {"type": "carousel", "contents": [one,two]}}
              
