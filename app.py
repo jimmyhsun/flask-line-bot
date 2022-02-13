@@ -170,7 +170,7 @@ def sendTextMessageToMe():
 
 
 def getNameEmojiMessage():
-    message={
+    message={  "type": "flex","altText": "Flex Message","contents":{
               "type": "bubble",
               "hero": {
                 "type": "image",
@@ -257,6 +257,7 @@ def getNameEmojiMessage():
                   }
                 ]
               }
+            }
             }
     return message
 
