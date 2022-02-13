@@ -170,7 +170,7 @@ def sendTextMessageToMe():
 
 
 def getNameEmojiMessage():
-    message={"type": "template","altText": "this is a carousel template","template": {
+    message={
              "type":"carousel",
              "contents": [{"type": "bubble",
                            "hero":{"type":"image","url":F"{end_point}/static/quality.jpg","size":"full","aspectRatio": "20:13","aspectMode":"cover"},
@@ -194,7 +194,7 @@ def getNameEmojiMessage():
                                        }
 
                            }]
-                 }
+                 
             }
     return message
 
