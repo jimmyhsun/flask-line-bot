@@ -182,8 +182,8 @@ def getNameEmojiMessage():
         "style": "primary",
         "action": {
           "type": "uri",
-          "label": "Primary style button",
-          "uri": "https://example.com"
+          "label": "Primary style button"
+          
         }
       },
       {
@@ -191,8 +191,8 @@ def getNameEmojiMessage():
         "style": "secondary",
         "action": {
           "type": "uri",
-          "label": "Secondary style button",
-          "uri": "https://example.com"
+          "label": "Secondary style button"
+         
         }
       },
       {
@@ -200,8 +200,8 @@ def getNameEmojiMessage():
         "style": "link",
         "action": {
           "type": "uri",
-          "label": "Link style button",
-          "uri": "https://example.com"
+          "label": "Link style button"
+          
         }
       }
     ]
