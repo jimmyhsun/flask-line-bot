@@ -12,7 +12,7 @@ app = Flask(__name__, static_url_path='/static')
 UPLOAD_FOLDER = 'static'
 ALLOWED_EXTENSIONS = set(['pdf', 'png', 'jpg', 'jpeg', 'gif'])
 
-
+car=[]
 config = configparser.ConfigParser()
 config.read('config.ini')
 
@@ -46,7 +46,7 @@ def index():
 
                 if text == "菜單":
                     payload["messages"] = [getNameEmojiMessage()]
-                elif text == "出去玩囉":
+                elif text == "購物車":
                     payload["messages"] = [getPlayStickerMessage()]
                 elif text == "台北101圖":
                     payload["messages"] = [getTaipei101ImageMessage()]
@@ -212,7 +212,7 @@ def getNameEmojiMessage():
                     "action": {
                       "type": "postback",
                       "label": "加入購物車",
-                      "data": "hello"
+                      "data": car.append(30)
                     }}]}}
     two={"type": "bubble",
          "hero": {"type": "image",
@@ -255,7 +255,7 @@ def getNameEmojiMessage():
                     "action": {
                       "type": "postback",
                       "label": "加入購物車",
-                      "data": "hello"
+                      "data": car.append(40)
                     }}]}}
     message = {"type": "flex", "altText": "Flex Message", "contents": {"type": "carousel", "contents": [one,two]}}
              
@@ -331,7 +331,7 @@ def getCallCarMessage(data):
 
 
 def getPlayStickerMessage():
-    message = {"type": "sticker", "packageId": "446", "stickerId": "1990"}
+    message = {"type": "text", "text":car}
     return message
 
 
