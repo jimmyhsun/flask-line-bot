@@ -172,7 +172,7 @@ def sendTextMessageToMe():
 def getNameEmojiMessage():
     message={
              "type": "bubble",
-                           "hero":{"type":"image","url":F"{end_point}/static/taipei_101.jpeg","size":"full","aspectRatio": "20:13","aspectMode":"cover"},
+                           "hero":{"type":"image","url":"https://scdn.line-apps.com/n/channel_devcenter/img/fx/01_1_cafe.png","size":"full","aspectRatio": "20:13","aspectMode":"cover"},
                               "body": {"type": "box",
                                        "layout": "vertical",
                                        "contents": [{"type": "text","text": "甜不辣","weight": "bold","size": "xl"},
