@@ -170,77 +170,37 @@ def sendTextMessageToMe():
 
 
 def getNameEmojiMessage():
-    message={  "type": "flex","altText": "Flex Message","contents":{
-              "type": "bubble",
-              "hero": {
-                "type": "image",
-                "url": "https://student04.herokuapp.com/static/quality.jpg",
-                "size": "full",
-                "aspectRatio": "20:13",
-                "aspectMode": "cover"
-              },
-              "body": {
-                "type": "box",
-                "layout": "vertical",
-                "spacing": "md",
-                "contents": [
-                  {
-                    "type": "text",
-                    "text": "甜不辣",
-                    "size": "3xl",
-                    "weight": "bold"
-                  },
-                  {
-                    "type": "box",
-                    "layout": "vertical",
-                    "spacing": "sm",
-                    "contents": [
-                      {
-                        "type": "box",
-                        "layout": "baseline",
-                        "contents": [
-                          {
-                            "type": "text",
-                            "text": "價錢",
-                            "weight": "bold",
-                            "margin": "sm",
-                            "flex": 0,
-                            "size": "lg"
-                          },
-                          {
-                            "type": "text",
-                            "text": "30元",
-                            "size": "lg",
-                            "align": "end",
-                            "color": "#aaaaaa"
-                          }
-                        ]
-                      },
-                      {
-                        "type": "box",
-                        "layout": "baseline",
-                        "contents": [
-                          {
-                            "type": "text",
-                            "text": "熱量",
-                            "weight": "bold",
-                            "margin": "sm",
-                            "flex": 0,
-                            "size": "lg"
-                          },
-                          {
-                            "type": "text",
+    # message={"type": "flex","altText": "Flex Message","contents":{"type":"carousel","contents":[one]}}
+    one={"type": "bubble",
+         "hero": {"type": "image",
+                        "url": "https://student04.herokuapp.com/static/quality.jpg",
+                        "size": "full", "aspectRatio": "20:13","aspectMode": "cover"},
+          "body": {"type": "box","layout": "vertical","spacing": "md",
+                   "contents": [{"type": "text",
+                                "text": "甜不辣",
+                                "size": "3xl",
+                                "weight": "bold"},
+                                {"type": "box","layout": "vertical","spacing": "sm",
+                                     "contents": [{"type": "box",
+                                                    "layout": "baseline",
+                                                    "contents": [{"type": "text","text": "價錢",
+                                                                  "weight": "bold",
+                                                                   "margin": "sm",
+                                                                   "flex": 0,
+                                                                   "size": "lg"},
+                                                                  {"type": "text",
+                                                                    "text": "30元",
+                                                                    "size": "lg",
+                                                                    "align": "end",
+                                                                    "color": "#aaaaaa"}]},
+                                                   {"type": "box","layout": "baseline",
+                                                    "contents": [{"type": "text","text": "熱量","weight": "bold","margin": "sm","flex": 0,"size": "lg"},
+                          {"type": "text",
                             "text": "550kcl",
                             "size": "lg",
                             "align": "end",
                             "color": "#aaaaaa"
-                          }
-                        ]
-                      }
-                    ]
-                  }
-                ]
-              },
+                          }]}]}]},
               "footer": {
                 "type": "box",
                 "layout": "vertical",
@@ -253,14 +213,53 @@ def getNameEmojiMessage():
                       "type": "postback",
                       "label": "加入購物車",
                       "data": "hello"
-                    }
-                  }
-                ]
-              }
-            }
-            }
+                    }}]}}
+    two={"type": "bubble",
+         "hero": {"type": "image",
+                        "url": "https://student04.herokuapp.com/static/quality.jpg",
+                        "size": "full", "aspectRatio": "20:13","aspectMode": "cover"},
+          "body": {"type": "box","layout": "vertical","spacing": "md",
+                   "contents": [{"type": "text",
+                                "text": "甜不辣",
+                                "size": "3xl",
+                                "weight": "bold"},
+                                {"type": "box","layout": "vertical","spacing": "sm",
+                                 "contents": [{"type": "box",
+                                                    "layout": "baseline",
+                                                    "contents": [{"type": "text","text": "價錢",
+                                                                  "weight": "bold",
+                                                                   "margin": "sm",
+                                                                   "flex": 0,
+                                                                   "size": "lg"},
+                                                                  {"type": "text",
+                                                                    "text": "30元",
+                                                                    "size": "lg",
+                                                                    "align": "end",
+                                                                    "color": "#aaaaaa"}]},
+                                                   {"type": "box","layout": "baseline",
+                                                    "contents": [{"type": "text","text": "熱量","weight": "bold","margin": "sm","flex": 0,"size": "lg"},
+                          {"type": "text",
+                            "text": "550kcl",
+                            "size": "lg",
+                            "align": "end",
+                            "color": "#aaaaaa"
+                          }]}]}]},
+              "footer": {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "button",
+                    "style": "primary",
+                    "color": "#905c44",
+                    "action": {
+                      "type": "postback",
+                      "label": "加入購物車",
+                      "data": "hello"
+                    }}]}}
+    message = {"type": "flex", "altText": "Flex Message", "contents": {"type": "carousel", "contents": [one,two]}}
+             
     return message
-
 
 def getCarouselMessage(data):
     message = {
