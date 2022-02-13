@@ -170,43 +170,8 @@ def sendTextMessageToMe():
 
 
 def getNameEmojiMessage():
-    message={
-  "type": "bubble",
-  "body": {
-    "type": "box",
-    "layout": "vertical",
-    "spacing": "md",
-    "contents": [
-      {
-        "type": "button",
-        "style": "primary",
-        "action": {
-          "type": "uri",
-          "label": "Primary style button"
-          
-        }
-      },
-      {
-        "type": "button",
-        "style": "secondary",
-        "action": {
-          "type": "uri",
-          "label": "Secondary style button"
-         
-        }
-      },
-      {
-        "type": "button",
-        "style": "link",
-        "action": {
-          "type": "uri",
-          "label": "Link style button"
-          
-        }
-      }
-    ]
-  }
-}
+    message={"type":"text","text":"coolme"}
+  
     return message
 
 
