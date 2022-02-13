@@ -183,11 +183,11 @@ def getNameEmojiMessage():
                                                      "contents": [{"type": "box",
                                                                    "layout": "baseline",
                                                                    "spacing": "sm",
-                                                                   "contents": [{"type": "text","text": "熱量 : 144大卡","color": "#666666","size": "xxl","flex": 5}]},
+                                                                   "contents": [{"type": "text","text": "熱量 : 144大卡","color": "#666666","size": "xxl"}]},
                                                                   {"type": "box",
                                                                    "layout": "baseline",
                                                                    "spacing": "sm",
-                                                                   "contents": [{"type": "text","text": "價錢 : 144元","color": "#666666","size": "xxl","flex": 5 }]
+                                                                   "contents": [{"type": "text","text": "價錢 : 144元","color": "#666666","size": "xxl" }]
                                                                    }]
                                                      }]
                                        }
