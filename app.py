@@ -12,7 +12,7 @@ app = Flask(__name__, static_url_path='/static')
 UPLOAD_FOLDER = 'static'
 ALLOWED_EXTENSIONS = set(['pdf', 'png', 'jpg', 'jpeg', 'gif'])
 
-car={"甜不辣":"abc","米血糕":"40元"}
+car={"甜不辣":"30元","米血糕":"40元"}
 car_one=[]
 config = configparser.ConfigParser()
 config.read('config.ini')
@@ -108,8 +108,8 @@ def index():
                             }
                         ]
                 replyMessage(payload)
-            elif events[0]["postback"]["data"] == "abc":
-                 get_in_car()
+            elif events[0]["postback"]["data"] == "30元":
+                 payload["messages"]=[get_in_car()]
 
         elif events[0]["type"] == "postback":
             if "params" in events[0]["postback"]:
@@ -167,7 +167,7 @@ def sendTextMessageToMe():
     return 'OK'
 
 def get_in_car():
-    car_one.append("30")
+    car_one.append(30)
 
 def getNameEmojiMessage():
     # message={"type": "flex","altText": "Flex Message","contents":{"type":"carousel","contents":[one]}}
