@@ -214,7 +214,8 @@ def getNameEmojiMessage():
                     "action": {
                       "type": "postback",
                       "label": "加入購物車",
-                      "data": car["甜不辣"]
+                      "data": car["甜不辣"],
+                       "displayText":"成功加入購物車"
                     }}]}}
     two={"type": "bubble",
          "hero": {"type": "image",
@@ -257,7 +258,8 @@ def getNameEmojiMessage():
                     "action": {
                       "type": "postback",
                       "label": "加入購物車",
-                      "data": car["米血糕"]
+                      "data": car["米血糕"],
+                       "displayText":"成功加入購物車"
                     }}]}}
     message = {"type": "flex", "altText": "Flex Message", "contents": {"type": "carousel", "contents": [one,two]}}
              
