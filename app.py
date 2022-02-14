@@ -122,9 +122,9 @@ def index():
                     ]
                 replyMessage(payload)
             elif events[0]["postback"]["data"] == "30元":
-                 car_one.append("甜不辣")
+                 car_one.append(("甜不辣",30))
             elif events[0]["postback"]["data"] == "40元":
-                 car_one.append("米血糕")
+                 car_one.append(("米血糕",40))
             else:
                 data = json.loads(events[0]["postback"]["data"])
                 action = data["action"]
@@ -335,7 +335,7 @@ def getCallCarMessage(data):
 
 
 def getPlayStickerMessage():
-    message = {"type": "text", "text":f"您所購賣的金額\n{car_one}"}
+    message = {"type": "text", "text":sorted(car_one,key=lambda car_one:car_one[1])}
     return message
 
 
