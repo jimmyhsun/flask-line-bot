@@ -12,7 +12,7 @@ app = Flask(__name__, static_url_path='/static')
 UPLOAD_FOLDER = 'static'
 ALLOWED_EXTENSIONS = set(['pdf', 'png', 'jpg', 'jpeg', 'gif'])
 
-car={"甜不辣":"30元","米血糕":"40元"}
+car={"甜不辣":"abc","米血糕":"40元"}
 car_one=[]
 config = configparser.ConfigParser()
 config.read('config.ini')
@@ -108,13 +108,9 @@ def index():
                             }
                         ]
                 replyMessage(payload)
-            elif events[0]["postback"]["data"] == "30元":
+            elif events[0]["postback"]["data"] == "abc":
                  get_in_car()
-#                 title = events[0]["message"]["title"]
-#                 latitude = events[0]["message"]["latitude"]
-#                 longitude = events[0]["message"]["longitude"]
-#                 payload["messages"] = [getLocationConfirmMessage(title, latitude, longitude)]
-#                 replyMessage(payload)
+
         elif events[0]["type"] == "postback":
             if "params" in events[0]["postback"]:
                 reservedTime = events[0]["postback"]["params"]["datetime"].replace("T", " ")
