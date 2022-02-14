@@ -13,7 +13,7 @@ UPLOAD_FOLDER = 'static'
 ALLOWED_EXTENSIONS = set(['pdf', 'png', 'jpg', 'jpeg', 'gif'])
 
 car={"甜不辣":"30元","米血糕":"40元"}
-car_one=[]
+acc=[]
 config = configparser.ConfigParser()
 config.read('config.ini')
 
@@ -122,9 +122,9 @@ def index():
                     ]
                 replyMessage(payload)
             elif events[0]["postback"]["data"] == "30元":
-                 car_one.append(("甜不辣",30))
+                 acc.append(("甜不辣",30))
             elif events[0]["postback"]["data"] == "40元":
-                 car_one.append(("米血糕",40))
+                 acc.append(("米血糕",40))
             else:
                 data = json.loads(events[0]["postback"]["data"])
                 action = data["action"]
@@ -335,7 +335,8 @@ def getCallCarMessage(data):
 
 
 def getPlayStickerMessage():
-    message = {"type": "text", "text":sorted(car_one,key=lambda car_one:car_one[1])}
+    a=sorted(acc,key=lambda acc:acc[1])
+    message = {"type": "text", "text":a}
     return message
 
 
