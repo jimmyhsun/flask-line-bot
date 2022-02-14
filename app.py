@@ -108,8 +108,8 @@ def index():
                             }
                         ]
                 replyMessage(payload)
-            elif events[0]["message"] == "30元":
-                  car_one.append(30)
+            elif events[0]["postback"]["data"] == '30元':
+                  car_one.append("30")
 #                 title = events[0]["message"]["title"]
 #                 latitude = events[0]["message"]["latitude"]
 #                 longitude = events[0]["message"]["longitude"]
