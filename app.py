@@ -109,7 +109,7 @@ def index():
                         ]
                 replyMessage(payload)
             elif events[0]["postback"]["data"] == "30元":
-                 payload["messages"]=[get_in_car()]
+                 car_one.append(30)
 
         elif events[0]["type"] == "postback":
             if "params" in events[0]["postback"]:
@@ -121,6 +121,8 @@ def index():
                         }
                     ]
                 replyMessage(payload)
+            elif events[0]["postback"]["data"] == "30元":
+                 car_one.append(30)
             else:
                 data = json.loads(events[0]["postback"]["data"])
                 action = data["action"]
@@ -166,8 +168,6 @@ def sendTextMessageToMe():
     pushMessage({})
     return 'OK'
 
-def get_in_car():
-    car_one.append(30)
 
 def getNameEmojiMessage():
     # message={"type": "flex","altText": "Flex Message","contents":{"type":"carousel","contents":[one]}}
