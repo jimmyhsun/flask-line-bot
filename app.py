@@ -257,7 +257,7 @@ def getNameEmojiMessage():
                     "action": {
                       "type": "postback",
                       "label": "加入購物車",
-                      "data": "lsasdasd"
+                      "data": car["米血糕"]
                     }}]}}
     message = {"type": "flex", "altText": "Flex Message", "contents": {"type": "carousel", "contents": [one,two]}}
              
