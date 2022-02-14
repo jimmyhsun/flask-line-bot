@@ -13,6 +13,7 @@ UPLOAD_FOLDER = 'static'
 ALLOWED_EXTENSIONS = set(['pdf', 'png', 'jpg', 'jpeg', 'gif'])
 
 car={"甜不辣":"30元","米血糕":"40元"}
+car_one=[]
 config = configparser.ConfigParser()
 config.read('config.ini')
 
@@ -107,12 +108,13 @@ def index():
                             }
                         ]
                 replyMessage(payload)
-            elif events[0]["message"]["type"] == "location":
-                title = events[0]["message"]["title"]
-                latitude = events[0]["message"]["latitude"]
-                longitude = events[0]["message"]["longitude"]
-                payload["messages"] = [getLocationConfirmMessage(title, latitude, longitude)]
-                replyMessage(payload)
+            elif events[0]["postback"]["data"] == "30元":
+                  car_one.append(30)
+#                 title = events[0]["message"]["title"]
+#                 latitude = events[0]["message"]["latitude"]
+#                 longitude = events[0]["message"]["longitude"]
+#                 payload["messages"] = [getLocationConfirmMessage(title, latitude, longitude)]
+#                 replyMessage(payload)
         elif events[0]["type"] == "postback":
             if "params" in events[0]["postback"]:
                 reservedTime = events[0]["postback"]["params"]["datetime"].replace("T", " ")
@@ -331,7 +333,7 @@ def getCallCarMessage(data):
 
 
 def getPlayStickerMessage():
-    message = {"type": "text", "text":car}
+    message = {"type": "text", "text":f"您所購賣的金額\n{car_one}"}
     return message
 
 
