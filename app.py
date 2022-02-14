@@ -12,7 +12,7 @@ app = Flask(__name__, static_url_path='/static')
 UPLOAD_FOLDER = 'static'
 ALLOWED_EXTENSIONS = set(['pdf', 'png', 'jpg', 'jpeg', 'gif'])
 
-car=[]
+car={"甜不辣":"30元","米血糕":"40元"}
 config = configparser.ConfigParser()
 config.read('config.ini')
 
@@ -212,7 +212,7 @@ def getNameEmojiMessage():
                     "action": {
                       "type": "postback",
                       "label": "加入購物車",
-                      "data": "cool"
+                      "data": car["甜不辣"]
                     }}]}}
     two={"type": "bubble",
          "hero": {"type": "image",
