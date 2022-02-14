@@ -123,6 +123,8 @@ def index():
                 replyMessage(payload)
             elif events[0]["postback"]["data"] == "30元":
                  car_one.append(30)
+            elif events[0]["postback"]["data"] == "40元":
+                 car_one.append(40)
             else:
                 data = json.loads(events[0]["postback"]["data"])
                 action = data["action"]
