@@ -123,8 +123,10 @@ def index():
                 replyMessage(payload)
             elif events[0]["postback"]["data"] == "30元":
                  acc.append(("甜不辣",30))
+                
             elif events[0]["postback"]["data"] == "40元":
                  acc.append(("米血糕",40))
+                 
             else:
                 data = json.loads(events[0]["postback"]["data"])
                 action = data["action"]
