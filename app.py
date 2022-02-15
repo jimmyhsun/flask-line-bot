@@ -336,7 +336,7 @@ def getCallCarMessage(data):
 
 def getPlayStickerMessage():
     a=sorted(acc,key=lambda acc:acc[1])
-    message = {"type": "text", "text":a}
+    message = {"type": "text", "text":f"你所點的項目{a}"}
     return message
 
 
