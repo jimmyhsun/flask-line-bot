@@ -2,11 +2,12 @@
 <html>
     <head>
         <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>滷味價格試算</title>
     </head>
     <body style="background-image: url('bg.jpg');">
         <h1 align='center'>食物價格與熱量查詢</h1>
-        <script src="model.js"></script>
+       
         <!-- <div align='center'>
             <input id="a" type="text" > + <input id="b" type="text" >
             <button onclick="add()" > ＝ </button>
@@ -14,6 +15,36 @@
         </div> -->
         <div>
             <script src="model.js"></script>
+            <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
+            <script>
+                function initializeLiff() {
+                        liff.init({liffId: '1656880552-mzJQQEzw'})
+                            .then(() => {
+                                // start to use LIFF's api
+                                initializeApp();})
+                            .catch((err) => {
+                            });}
+                initializeLiff();
+                document.getElementById('submit').addEventListener('click', function () {
+                        if (!liff.isInClient()) {
+                            sendAlertIfNotInClient();} 
+                        else {
+                            const twdInput = parseInt(document.getElementById('result_one').value);
+                            liff.sendMessages([{
+                                'type': 'text',
+                                'text': "你有這麼多美金：" + twdInput
+                            }]).then(function () {
+                                window.alert('Message sent');
+                            }).catch(function (error) {
+                                window.alert('Error sending message: ' + error);
+                            });
+                            liff.closeWindow();
+                        // JSON from `response.json()` call
+                        
+                                }
+                            });
+               
+            </script>
             <table align='center' style="border:3px hsl(256, 100%, 75%) dashed;" cellpadding="10" border='1'>
                 <tr>
                     <th>食物名稱</th>
@@ -72,9 +103,11 @@
                 </tr>
                 <tr>
                     <td></td>
-                    <td><button onclick="abc()" style="width:120px;height:40px;font-size:20px;background: #1E90FF;color: white">結帳</button></td>
+                    <td><button  onclick="abc()" style="width:120px;height:40px;font-size:20px;background: #1E90FF;color: white">結帳</button></td>
                     <td>價格 : <output id="result_one" style="font-size:20px"></output>
                         <br>熱量 : <output id="result_two" style="font-size:20px"></output>
+                        
+                    
                      </td>
                 </tr>
             </table>

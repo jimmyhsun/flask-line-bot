@@ -33,3 +33,6 @@ function abc() {
         document.getElementById('result_one').innerHTML =  total ;
         document.getElementById('result_two').innerHTML =  c*300+d*300+e*300+f*400+g*300+h*300+i*300+j*300+k*300+l*300;
     }
+
+               
+            
