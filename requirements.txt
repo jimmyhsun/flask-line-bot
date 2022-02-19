@@ -2,3 +2,5 @@ gunicorn
 line-bot-sdk
 Flask
 audioread
+pymysql
+mysql.connector
