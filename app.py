@@ -8,6 +8,18 @@ import json
 import configparser
 import os
 from urllib import parse
+import pymysql
+
+# 資料庫設定
+db_settings = {
+    "host": "35.221.178.251",
+    "port": 3306,
+    "user": "root",
+    "password": "cfi10202",
+    "db": "project",
+    "charset": "utf8"
+}
+
 app = Flask(__name__, static_url_path='/static')
 UPLOAD_FOLDER = 'static'
 ALLOWED_EXTENSIONS = set(['pdf', 'png', 'jpg', 'jpeg', 'gif'])
@@ -64,13 +76,8 @@ def index():
                                 "text": getTotalSentMessageCount()
                             }
                         ]
-                elif text == "今日確診人數":
-                    payload["messages"] = [
-                            {
-                                "type": "text",
-                                "text": getTodayCovid19Message()
-                            }
-                        ]
+                elif text == "食物":
+                    payload["messages"] = [getfood()]
                 elif text == "主選單":
                     payload["messages"] = [
                             {
@@ -205,20 +212,7 @@ def getNameEmojiMessage():
                             "align": "end",
                             "color": "#aaaaaa"
                           }]}]}]}}
-#               "footer": {
-#                 "type": "box",
-#                 "layout": "vertical",
-#                 "contents": [
-#                   {
-#                     "type": "button",
-#                     "style": "primary",
-#                     "color": "#905c44",
-#                     "action": {
-#                       "type": "postback",
-#                       "label": "加入購物車",
-#                       "data": car["甜不辣"],
-#                        "displayText":"成功加入購物車"
-#                     }}]}}
+
     two={"type": "bubble",
          "hero": {"type": "image",
                         "url": "https://student04.herokuapp.com/static/quality.jpg",
@@ -249,20 +243,7 @@ def getNameEmojiMessage():
                             "align": "end",
                             "color": "#aaaaaa"
                           }]}]}]}}
-#               "footer": {
-#                 "type": "box",
-#                 "layout": "vertical",
-#                 "contents": [
-#                   {
-#                     "type": "button",
-#                     "style": "primary",
-#                     "color": "#905c44",
-#                     "action": {
-#                       "type": "postback",
-#                       "label": "加入購物車",
-#                       "data": car["米血糕"],
-#                        "displayText":"成功加入購物車"
-#                     }}]}}
+
     message = {"type": "flex", "altText": "Flex Message", "contents": {"type": "carousel", "contents": [one,two]}}
              
     return message
@@ -399,12 +380,29 @@ def getTotalSentMessageCount():
     return response.json()["totalUsage"]
 
 
-def getTodayCovid19Message():
-    response = requests.get("https://covid-19.nchc.org.tw/api/covid19?CK=covid-19@nchc.org.tw&querydata=4001&limited=TWN")
-    date = response.json()[0]["a04"]
-    total_count = response.json()[0]["a05"]
-    count = response.json()[0]["a06"]
-    return F"日期：{date}, 新增確診人數：{count}, 確診總人數：{total_count}"
+def getfood():
+    try:
+        # 建立Connection物件
+        conn = pymysql.connect(**db_settings)
+        # 建立Cursor物件
+        with conn.cursor() as cursor:
+
+            command = """
+                      select * from products   #查詢products表所有內容
+                      """
+            cursor.execute(command)
+            result = cursor.fetchall()  # 取得所有資料
+            # result = cursor.fetchone() #取得一筆資料
+            # result = cursor.fetchmany(5) # 取得多筆資料 ex:前五筆資料
+            # for i in range(len(result)):
+            #     print(result[i], end="\n")
+
+
+    except Exception as ex:
+        print(ex)
+    messages={"type":"text","text":f"{result}"}
+
+    return messages
 
 
 def allowed_file(filename):
