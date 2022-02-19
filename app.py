@@ -204,21 +204,21 @@ def getNameEmojiMessage():
                             "size": "lg",
                             "align": "end",
                             "color": "#aaaaaa"
-                          }]}]}]},
-              "footer": {
-                "type": "box",
-                "layout": "vertical",
-                "contents": [
-                  {
-                    "type": "button",
-                    "style": "primary",
-                    "color": "#905c44",
-                    "action": {
-                      "type": "postback",
-                      "label": "加入購物車",
-                      "data": car["甜不辣"],
-                       "displayText":"成功加入購物車"
-                    }}]}}
+                          }]}]}]}}
+#               "footer": {
+#                 "type": "box",
+#                 "layout": "vertical",
+#                 "contents": [
+#                   {
+#                     "type": "button",
+#                     "style": "primary",
+#                     "color": "#905c44",
+#                     "action": {
+#                       "type": "postback",
+#                       "label": "加入購物車",
+#                       "data": car["甜不辣"],
+#                        "displayText":"成功加入購物車"
+#                     }}]}}
     two={"type": "bubble",
          "hero": {"type": "image",
                         "url": "https://student04.herokuapp.com/static/quality.jpg",
@@ -248,21 +248,21 @@ def getNameEmojiMessage():
                             "size": "lg",
                             "align": "end",
                             "color": "#aaaaaa"
-                          }]}]}]},
-              "footer": {
-                "type": "box",
-                "layout": "vertical",
-                "contents": [
-                  {
-                    "type": "button",
-                    "style": "primary",
-                    "color": "#905c44",
-                    "action": {
-                      "type": "postback",
-                      "label": "加入購物車",
-                      "data": car["米血糕"],
-                       "displayText":"成功加入購物車"
-                    }}]}}
+                          }]}]}]}}
+#               "footer": {
+#                 "type": "box",
+#                 "layout": "vertical",
+#                 "contents": [
+#                   {
+#                     "type": "button",
+#                     "style": "primary",
+#                     "color": "#905c44",
+#                     "action": {
+#                       "type": "postback",
+#                       "label": "加入購物車",
+#                       "data": car["米血糕"],
+#                        "displayText":"成功加入購物車"
+#                     }}]}}
     message = {"type": "flex", "altText": "Flex Message", "contents": {"type": "carousel", "contents": [one,two]}}
              
     return message
