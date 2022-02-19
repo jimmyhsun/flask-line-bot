@@ -8,6 +8,7 @@ import json
 import configparser
 import os
 from urllib import parse
+import mysql.connector
 # import pymysql
 
 # # 資料庫設定
@@ -380,29 +381,19 @@ def getTotalSentMessageCount():
     return response.json()["totalUsage"]
 
 
-# def getfood():
-#     try:
-#         # 建立Connection物件
-#         conn = pymysql.connect(**db_settings)
-#         # 建立Cursor物件
-#         with conn.cursor() as cursor:
+def getfood():
+    connection = mysql.connector.connect(host="35.221.178.251",
+                                        database="project",
+                                        user="root",
+                                        password="cfi10202")
+    mycursor = connection.cursor()
+    mycursor.execute("SELECT * FROM products")
+    myresult = mycursor.fetchall()
+    showlist = "".join(f"{x[1].ljust(30, '-')}{str(x[2]).rjust(4)}元 ({x[2]}大卡)\n" for x in myresult)
+    
+    messages={"type":"text","text":f"{showlist}"}
 
-#             command = """
-#                       select * from products   #查詢products表所有內容
-#                       """
-#             cursor.execute(command)
-#             result = cursor.fetchall()  # 取得所有資料
-#             # result = cursor.fetchone() #取得一筆資料
-#             # result = cursor.fetchmany(5) # 取得多筆資料 ex:前五筆資料
-#             # for i in range(len(result)):
-#             #     print(result[i], end="\n")
-
-
-#     except Exception as ex:
-#         print(ex)
-#     messages={"type":"text","text":f"{result}"}
-
-#     return messages
+    return messages
 
 
 def allowed_file(filename):
