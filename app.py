@@ -400,7 +400,7 @@ def getfood():
 
     except Exception as ex:
         print(ex)
-    messages={"type":"text","text":f"{result[0]}"}
+    messages={"type":"text","text":f"{result}"}
 
     return messages
 
