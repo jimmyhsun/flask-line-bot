@@ -8,17 +8,17 @@ import json
 import configparser
 import os
 from urllib import parse
-import pymysql
+# import pymysql
 
-# 資料庫設定
-db_settings = {
-    "host": "35.221.178.251",
-    "port": 3306,
-    "user": "root",
-    "password": "cfi10202",
-    "db": "project",
-    "charset": "utf8"
-}
+# # 資料庫設定
+# db_settings = {
+#     "host": "35.221.178.251",
+#     "port": 3306,
+#     "user": "root",
+#     "password": "cfi10202",
+#     "db": "project",
+#     "charset": "utf8"
+# }
 
 app = Flask(__name__, static_url_path='/static')
 UPLOAD_FOLDER = 'static'
@@ -380,29 +380,29 @@ def getTotalSentMessageCount():
     return response.json()["totalUsage"]
 
 
-def getfood():
-    try:
-        # 建立Connection物件
-        conn = pymysql.connect(**db_settings)
-        # 建立Cursor物件
-        with conn.cursor() as cursor:
+# def getfood():
+#     try:
+#         # 建立Connection物件
+#         conn = pymysql.connect(**db_settings)
+#         # 建立Cursor物件
+#         with conn.cursor() as cursor:
 
-            command = """
-                      select * from products   #查詢products表所有內容
-                      """
-            cursor.execute(command)
-            result = cursor.fetchall()  # 取得所有資料
-            # result = cursor.fetchone() #取得一筆資料
-            # result = cursor.fetchmany(5) # 取得多筆資料 ex:前五筆資料
-            # for i in range(len(result)):
-            #     print(result[i], end="\n")
+#             command = """
+#                       select * from products   #查詢products表所有內容
+#                       """
+#             cursor.execute(command)
+#             result = cursor.fetchall()  # 取得所有資料
+#             # result = cursor.fetchone() #取得一筆資料
+#             # result = cursor.fetchmany(5) # 取得多筆資料 ex:前五筆資料
+#             # for i in range(len(result)):
+#             #     print(result[i], end="\n")
 
 
-    except Exception as ex:
-        print(ex)
-    messages={"type":"text","text":f"{result}"}
+#     except Exception as ex:
+#         print(ex)
+#     messages={"type":"text","text":f"{result}"}
 
-    return messages
+#     return messages
 
 
 def allowed_file(filename):
