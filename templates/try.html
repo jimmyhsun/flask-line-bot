@@ -25,12 +25,12 @@
                             .catch((err) => {
                             });}
                 initializeLiff();
-                function acc(){
-                document.getElementById('aaa').addEventListener('click', function () {
+                
+                document.getElementById('submit').addEventListener('click', function () {
                         if (!liff.isInClient()) {
                             sendAlertIfNotInClient();} 
                         else {
-                            const twdInput = parseInt(document.getElementById('result_one').value);
+                            var twdInput = document.getElementById('result_one').value;
                             liff.sendMessages([{
                                 'type': 'text',
                                 'text': "你有這麼多美金：" + twdInput
@@ -43,7 +43,7 @@
                         // JSON from `response.json()` call
                         
                                 }
-                            });}
+                            });
                
             </script>
             <table align='center' style="border:3px hsl(256, 100%, 75%) dashed;" cellpadding="10" border='1'>
@@ -104,12 +104,11 @@
                 </tr>
                 <tr>
                     <td></td>
-                    <td><button  onclick="abc()" style="width:120px;height:40px;font-size:20px;background: #1E90FF;color: white">結帳</button></td>
+                    <td><button id="submit" onclick="abc()" style="width:120px;height:40px;font-size:20px;background: #1E90FF;color: white">結帳</button></td>
                     <td>價格 : <output id="result_one" style="font-size:20px"></output>
                         <br>熱量 : <output id="result_two" style="font-size:20px"></output>
-                        <br>
-                        <td><button  id="aaa" onclick="acc()" style="width:120px;height:40px;font-size:20px;background: #1E90FF;color: white">回到line</button></td>
-                    
+                       
+                        
                      </td>
                 </tr>
             </table>
