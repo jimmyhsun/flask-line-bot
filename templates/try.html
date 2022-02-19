@@ -20,10 +20,16 @@
                 function initializeLiff() {
                         liff.init({liffId: '1656880552-mzJQQEzw'})
                             .then(() => {
-                                // start to use LIFF's api
+                                console.log('LIFF init');
+                                
                                 initializeApp();})
                             .catch((err) => {
-                            });}
+                            });
+                        liff.login({
+                                    // 使用者登入後要去到哪個頁面
+                                    redirectUri: 'https://student04.herokuapp.com/shoppingcar'
+                                    });}
+
                 initializeLiff();
                 
                 document.getElementById('submit').addEventListener('click', function () {
