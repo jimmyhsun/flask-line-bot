@@ -466,6 +466,9 @@ def line_login():
             return render_template('login.html', client_id=line_login_id,
                                    end_point=end_point)
 
+@app.route('/shoppingcar', methods=['GET'])
+def shoppingcar():
+    return render_template(r"try.html")
 
 if __name__ == "__main__":
     app.debug = True
