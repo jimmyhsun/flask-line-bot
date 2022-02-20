@@ -361,18 +361,6 @@ def pushMessage(payload):
     return 'OK'
 
 
-# def getspend():
-#     connection = mysql.connector.connect(host="35.221.178.251",
-#                                          database="project",
-#                                          user="root",
-#                                          password="cfi10202")
-#     mycursor = connection.cursor()
-#     mycursor.execute("SELECT * FROM details where userid='{:s}'".format(userID))
-#     myresult = mycursor.fetchall()
-#     showlist = "".join(f"{x[3]} 數量 {x[4]}" for x in myresult)
-
-#     messages = {"type": "text", "text": f"{showlist}"}
-#     return messages
 def getspend():
     connection = mysql.connector.connect(host="35.221.178.251",
                                          database="project",
