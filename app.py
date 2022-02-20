@@ -367,7 +367,7 @@ def getspend():
                                          user="root",
                                          password="cfi10202")
     mycursor = connection.cursor()
-    mycursor.execute("SELECT * FROM details where userid=001")
+    mycursor.execute("SELECT * FROM details where userid={:s}".format(userID))
     myresult = mycursor.fetchall()
     showlist = "".join(f"{x[3]} 數量 {x[4]}" for x in myresult)
 
