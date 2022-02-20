@@ -447,7 +447,9 @@ def line_login():
                                                  user="root",
                                                  password="cfi10202")
             mycursor = connection.cursor()
-            mycursor.execute("insert into users(userid, user_name) values(%s,%s);",(userID, name))
+            command = "insert into users(userid, user_name) values('{:s}','{:s}');".format(userID, name)
+            mycursor.execute(command)
+            connection.commit()
             return render_template('profile.html', name=name, pictureURL=
                                    pictureURL, userID=userID, statusMessage=
                                    statusMessage)
