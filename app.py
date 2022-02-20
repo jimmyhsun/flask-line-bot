@@ -387,7 +387,7 @@ def getspend():
         payload["replyToken"] = replyToken
         if events[0]["type"] == "message":
             if events[0]["source"]["type"] == "user":
-                userid = events[0]["source"]["useriId"]               
+                userid = events[0]["source"]["userId"]               
                 mycursor = connection.cursor()
                 mycursor.execute("SELECT * FROM details where userid='{:s}'".format(userid))
                 myresult = mycursor.fetchall()
