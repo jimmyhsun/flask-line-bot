@@ -378,14 +378,14 @@ def getspend():
                                          database="project",
                                          user="root",
                                          password="cfi10202")
-#     body = request.json
-#     events = body["events"]
+    body = request.json
+    events = body["events"]
 #     print(body)
-#     if "replyToken" in events[0]:
-#         payload = dict()
-#         replyToken = events[0]["replyToken"]
-#         payload["replyToken"] = replyToken
-      if events[0]["type"] == "message":
+    if "replyToken" in events[0]:
+        payload = dict()
+        replyToken = events[0]["replyToken"]
+        payload["replyToken"] = replyToken
+        if events[0]["type"] == "message":
             if events[0]["source"]["type"] == "user":
                 userid = events[0]["source"]["userId"]               
                 mycursor = connection.cursor()
