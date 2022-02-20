@@ -60,7 +60,7 @@ def index():
                     payload["messages"] = [getTaipei101ImageMessage(),
                                             getTaipei101LocationMessage(),
                                             getMRTVideoMessage()]
-                elif text == "消費紀錄查詢":
+                elif text == "消費記錄查詢":
                     payload["messages"] = [getspend()]
                 elif text == "食物":
                     payload["messages"] = [getfood()]
