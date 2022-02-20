@@ -9,17 +9,7 @@ import configparser
 import os
 from urllib import parse
 import mysql.connector
-# import pymysql
 
-# # 資料庫設定
-# db_settings = {
-#     "host": "35.221.178.251",
-#     "port": 3306,
-#     "user": "root",
-#     "password": "cfi10202",
-#     "db": "project",
-#     "charset": "utf8"
-# }
 
 app = Flask(__name__, static_url_path='/static')
 UPLOAD_FOLDER = 'static'
@@ -70,13 +60,8 @@ def index():
                     payload["messages"] = [getTaipei101ImageMessage(),
                                             getTaipei101LocationMessage(),
                                             getMRTVideoMessage()]
-                elif text == "quoda":
-                    payload["messages"] = [
-                            {
-                                "type": "text",
-                                "text": getTotalSentMessageCount()
-                            }
-                        ]
+                elif text == "消費紀錄查詢":
+                    payload["messages"] = [getspend()]
                 elif text == "食物":
                     payload["messages"] = [getfood()]
                 elif text == "主選單":
@@ -376,9 +361,18 @@ def pushMessage(payload):
     return 'OK'
 
 
-def getTotalSentMessageCount():
-    response = requests.get("https://api.line.me/v2/bot/message/quota/consumption",headers=HEADER)
-    return response.json()["totalUsage"]
+def getspend():
+    connection = mysql.connector.connect(host="35.221.178.251",
+                                         database="project",
+                                         user="root",
+                                         password="cfi10202")
+    mycursor = connection.cursor()
+    mycursor.execute("SELECT * FROM details where userid=001")
+    myresult = mycursor.fetchall()
+    showlist = "".join(f"{x[3]} 數量 {x[4]}" for x in myresult)
+
+    messages = {"type": "text", "text": f"{showlist}"}
+    return messages
 
 
 def getfood():
@@ -448,6 +442,12 @@ def line_login():
             pictureURL = content["pictureUrl"]
             statusMessage = content["statusMessage"]
             print(content)
+            connection = mysql.connector.connect(host="35.221.178.251",
+                                                 database="project",
+                                                 user="root",
+                                                 password="cfi10202")
+            mycursor = connection.cursor()
+            mycursor.execute("insert into users(userid, user_name) values('{:s}','{:s}');".format(userID, name))
             return render_template('profile.html', name=name, pictureURL=
                                    pictureURL, userID=userID, statusMessage=
                                    statusMessage)
