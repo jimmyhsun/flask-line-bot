@@ -481,7 +481,7 @@ def line_login():
                 connection.commit()
                 return render_template('profile.html', name=name,  userID=userID)
         except :
-            if not code and not state:
+            if code and state:
                     HEADERS = {'Content-Type': 'application/x-www-form-urlencoded'}
                     url = "https://api.line.me/oauth2/v2.1/token"
                     FormData = {"grant_type": 'authorization_code', "code": code, "redirect_uri": F"{end_point}/line_login",
