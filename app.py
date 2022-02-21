@@ -453,7 +453,7 @@ def line_login():
         code = request.args.get("code", None)
         state = request.args.get("state", None)
 
- 
+
         if code and state:
                 HEADERS = {'Content-Type': 'application/x-www-form-urlencoded'}
                 url = "https://api.line.me/oauth2/v2.1/token"
@@ -480,9 +480,8 @@ def line_login():
                 mycursor.execute(command)
                 connection.commit()
                 return render_template('profile.html', name=name,  userID=userID)
-
-         else:
-                return render_template('login.html', client_id=line_login_id,
+        else:
+            return render_template('login.html', client_id=line_login_id,
                                     end_point=end_point)
 
 @app.route('/shoppingcar', methods=['GET'])
