@@ -453,8 +453,8 @@ def line_login():
         code = request.args.get("code", None)
         state = request.args.get("state", None)
 
-        try:
-            if code and state:
+ 
+        if code and state:
                 HEADERS = {'Content-Type': 'application/x-www-form-urlencoded'}
                 url = "https://api.line.me/oauth2/v2.1/token"
                 FormData = {"grant_type": 'authorization_code', "code": code, "redirect_uri": F"{end_point}/line_login",
@@ -480,26 +480,8 @@ def line_login():
                 mycursor.execute(command)
                 connection.commit()
                 return render_template('profile.html', name=name,  userID=userID)
-        except :
-            if code and state:
-                    HEADERS = {'Content-Type': 'application/x-www-form-urlencoded'}
-                    url = "https://api.line.me/oauth2/v2.1/token"
-                    FormData = {"grant_type": 'authorization_code', "code": code, "redirect_uri": F"{end_point}/line_login",
-                                "client_id": line_login_id, "client_secret": line_login_secret}
-                    data = parse.urlencode(FormData)
-                    content = requests.post(url=url, headers=HEADERS, data=data).text
-                    content = json.loads(content)
-                    url = "https://api.line.me/v2/profile"
-                    HEADERS = {'Authorization': content["token_type"] + " " + content["access_token"]}
-                    content = requests.get(url=url, headers=HEADERS).text
-                    content = json.loads(content)
-                    name = content["displayName"]
-                    userID = content["userId"]
-                    # pictureURL = content["pictureUrl"]
-                    # statusMessage = content["statusMessage"]
-                    print(content)
-                    return render_template('profile.html', name=name,  userID=userID)
-            else:
+
+         else:
                 return render_template('login.html', client_id=line_login_id,
                                     end_point=end_point)
 
