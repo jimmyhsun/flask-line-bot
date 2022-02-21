@@ -50,8 +50,8 @@ def index():
 
                 if text == "菜單":
                     payload["messages"] = [getNameEmojiMessage()]
-                elif text == "購物車":
-                    payload["messages"] = [getPlayStickerMessage()]
+                elif text == "會員資料":
+                    payload["messages"] = [member()]
                 elif text == "台北101圖":
                     payload["messages"] = [getTaipei101ImageMessage()]
                 elif text == "台北101影片":
@@ -165,6 +165,29 @@ def sendTextMessageToMe():
     pushMessage({})
     return 'OK'
 
+
+def member():
+    connection = mysql.connector.connect(host="35.221.178.251",
+                                         database="project",
+                                         user="root",
+                                         password="cfi10202")
+    body = request.json
+    events = body["events"]
+    if "replyToken" in events[0]:
+        payload = dict()
+        replyToken = events[0]["replyToken"]
+        payload["replyToken"] = replyToken
+        if events[0]["type"] == "message":
+            if events[0]["source"]["type"] == "user":
+                userid = events[0]["source"]["userId"]
+                mycursor = connection.cursor()
+                mycursor.execute("SELECT id,user_name FROM users where userid='{:s}'".format(userid))
+
+                myresult = mycursor.fetchall()
+                showlist = "".join(f"會員號碼 : {x[0]} 會員姓名 : {x[1]}" for x in myresult)
+
+                messages = {"type": "text", "text": f"{showlist}"}
+                return messages
 
 def getNameEmojiMessage():
     # message={"type": "flex","altText": "Flex Message","contents":{"type":"carousel","contents":[one]}}
@@ -303,12 +326,6 @@ def getCallCarMessage(data):
     return message
 
 
-def getPlayStickerMessage():
-    a=sorted(acc,key=lambda acc:acc[1])
-    message = {"type": "text", "text":f"你所點的項目{a}"}
-    return message
-
-
 def getTaipei101LocationMessage():
     message = dict()
     message["type"] = "location"
@@ -327,16 +344,16 @@ def getMRTVideoMessage():
     return message
 
 
-def getMRTSoundMessage():
-    message = dict()
-    message["type"] = "audio"
-    message["originalContentUrl"] = F"{end_point}/static/mrt_sound.m4a"
-    import audioread
-    with audioread.audio_open('static/mrt_sound.m4a') as f:
-        # totalsec contains the length in float
-        totalsec = f.duration
-    message["duration"] = totalsec * 1000
-    return message
+# def getMRTSoundMessage():
+#     message = dict()
+#     message["type"] = "audio"
+#     message["originalContentUrl"] = F"{end_point}/static/mrt_sound.m4a"
+#     import audioread
+#     with audioread.audio_open('static/mrt_sound.m4a') as f:
+#         # totalsec contains the length in float
+#         totalsec = f.duration
+#     message["duration"] = totalsec * 1000
+#     return message
 
 
 def getTaipei101ImageMessage(originalContentUrl=F"{end_point}/static/taipei_101.jpeg"):
