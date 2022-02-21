@@ -449,8 +449,8 @@ def line_login():
             content = json.loads(content)
             name = content["displayName"]
             userID = content["userId"]
-            pictureURL = content["pictureUrl"]
-            statusMessage = content["statusMessage"]
+#             pictureURL = content["pictureUrl"]
+#             statusMessage = content["statusMessage"]
             print(content)
             connection = mysql.connector.connect(host="35.221.178.251",
                                                  database="project",
@@ -460,9 +460,7 @@ def line_login():
             command = "insert into users(userid, user_name) values('{:s}','{:s}');".format(userID, name)
             mycursor.execute(command)
             connection.commit()
-            return render_template('profile.html', name=name, pictureURL=
-                                   pictureURL, userID=userID, statusMessage=
-                                   statusMessage)
+            return render_template('profile.html', name=name,  userID=userID)
         else:
             return render_template('login.html', client_id=line_login_id,
                                    end_point=end_point)
