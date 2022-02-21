@@ -454,7 +454,7 @@ def line_login():
         state = request.args.get("state", None)
 
         try:
-            # if code and state:
+            if code and state:
                 HEADERS = {'Content-Type': 'application/x-www-form-urlencoded'}
                 url = "https://api.line.me/oauth2/v2.1/token"
                 FormData = {"grant_type": 'authorization_code', "code": code, "redirect_uri": F"{end_point}/line_login",
