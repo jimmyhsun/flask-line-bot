@@ -16,7 +16,12 @@
     }
 </script>
   </head>
-  <body>
-      <img src="{{url_for('static', filename='images/btn_login_base.png')}}" onclick="Auth();">
+  <body style="background-image: url('https://student04.herokuapp.com/static/bg.jpg')">
+      <div align='center'>
+        <h1>金山滷味 登入平台</h1>
+        <h3>點擊進行帳號登入</h3>
+        <img src="{{url_for('static', filename='images/btn_login_base.png')}}" onclick="Auth();" width="300" height="100">
+      </div>
+      
   </body>
 </html>
