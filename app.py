@@ -476,10 +476,16 @@ def line_login():
                                                      user="root",
                                                      password="cfi10202")
                 mycursor = connection.cursor()
-                command = "insert into users(userid, user_name) values('{:s}','{:s}');".format(userID, name)
-                mycursor.execute(command)
-                connection.commit()
-                return render_template('profile.html', name=name,  userID=userID)
+                command2 = "select userid from users"
+                mycursor.execute(command2)
+                myresult = mycursor.fetchall()
+                if userID in myresult:
+                    return render_template('profile.html', name=name, userID=userID)
+                else:
+                    command = "insert into users(userid, user_name) values('{:s}','{:s}');".format(userID, name)
+                    mycursor.execute(command)
+                    connection.commit()
+                    return render_template('profile.html', name=name,  userID=userID)
         else:
             return render_template('login.html', client_id=line_login_id,
                                     end_point=end_point)
