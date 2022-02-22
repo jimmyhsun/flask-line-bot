@@ -479,7 +479,10 @@ def line_login():
                 command2 = "select userid from users"
                 mycursor.execute(command2)
                 myresult = mycursor.fetchall()
-                if userID in myresult:
+                a = []
+                for i in myresult:
+                    a.append(f"{i[0]}")
+                if userID in a:
                     return render_template('profile.html', name=name, userID=userID)
                 else:
                     command = "insert into users(userid, user_name) values('{:s}','{:s}');".format(userID, name)
