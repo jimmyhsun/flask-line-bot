@@ -516,8 +516,8 @@ def submit():
         if j == None: j = 0
         if k == None: k = 0
         if l == None: l = 0
-        money = int(c*30+d*30+e*30+f*30+g*30+h*30+i*30+j*30+k*30+l*30)
-        calorie = int(c*30+d*30+e*30+f*30+g*30+h*30+i*30+j*30+k*30+l*30)
+        money = c*30+d*30+e*30+f*30+g*30+h*30+i*30+j*30+k*30+l*30
+        calorie = c*30+d*30+e*30+f*30+g*30+h*30+i*30+j*30+k*30+l*30
 
         return render_template('car.html',money=money,calorie=calorie)
     return render_template('try.html')
