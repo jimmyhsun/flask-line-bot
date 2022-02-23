@@ -493,9 +493,33 @@ def line_login():
             return render_template('login.html', client_id=line_login_id,
                                     end_point=end_point)
 
-@app.route('/shoppingcar', methods=['GET'])
-def shoppingcar():
-    return render_template(r"try.html")
+@app.route("/shoppingcar", methods=['GET', 'POST'])
+def submit():
+    if request.method == 'POST':
+        c = request.values.get('c')
+        d = request.values.get('d')
+        e = request.values.get('e')
+        f = request.values.get('f')
+        g = request.values.get('g')
+        h = request.values.get('h')
+        i = request.values.get('i')
+        j = request.values.get('j')
+        k = request.values.get('k')
+        l = request.values.get('l')
+        if c==None: c=0
+        if d==None: d = 0
+        if e==None: e = 0
+        if f==None: f = 0
+        if g==None: g = 0
+        if h==None: h = 0
+        if i==None: i = 0
+        if j == None: j = 0
+        if k == None: k = 0
+        if l == None: l = 0
+        total = c*30+d*30+e*30+f*30+g*30+h*30+i*30+j*30+k*30+l*30
+        calorie = c*30+d*30+e*30+f*30+g*30+h*30+i*30+j*30+k*30+l*30
+        return render_template('car.html',total=total,calorie=calorie)
+    return render_template('try.html')
 
 if __name__ == "__main__":
     app.debug = True
