@@ -496,16 +496,16 @@ def line_login():
 @app.route("/shoppingcar", methods=['GET', 'POST'])
 def submit():
     if request.method == 'POST':
-        c = request.values.get('c')
-        d = request.values.get('d')
-        e = request.values.get('e')
-        f = request.values.get('f')
-        g = request.values.get('g')
-        h = request.values.get('h')
-        i = request.values.get('i')
-        j = request.values.get('j')
-        k = request.values.get('k')
-        l = request.values.get('l')
+        c = int(request.form.get('c'))
+        d = int(request.form.get('d'))
+        e = int(request.form.get('e'))
+        f = int(request.form.get('f'))
+        g = int(request.form.get('g'))
+        h = int(request.form.get('h'))
+        i = int(request.form.get('i'))
+        j = int(request.form.get('j'))
+        k = int(request.form.get('k'))
+        l = int(request.form.get('l'))
         if c==None: c=0
         if d==None: d = 0
         if e==None: e = 0
@@ -516,11 +516,11 @@ def submit():
         if j == None: j = 0
         if k == None: k = 0
         if l == None: l = 0
-        total = c*30+d*30+e*30+f*30+g*30+h*30+i*30+j*30+k*30+l*30
-        calorie = c*30+d*30+e*30+f*30+g*30+h*30+i*30+j*30+k*30+l*30
-        return render_template('car.html',total=total,calorie=calorie)
-    return render_template('try.html')
+        money = int(c*30+d*30+e*30+f*30+g*30+h*30+i*30+j*30+k*30+l*30)
+        calorie = int(c*30+d*30+e*30+f*30+g*30+h*30+i*30+j*30+k*30+l*30)
 
+        return render_template('car.html',money=money,calorie=calorie)
+    return render_template('try.html')
 if __name__ == "__main__":
     app.debug = True
     app.run()
