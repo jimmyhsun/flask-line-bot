@@ -496,26 +496,18 @@ def line_login():
 @app.route("/shoppingcar", methods=['GET', 'POST'])
 def submit():
     if request.method == 'POST':
-        c = int(request.form.get('c'))
-        d = int(request.form.get('d'))
-        e = int(request.form.get('e'))
-        f = int(request.form.get('f'))
-        g = int(request.form.get('g'))
-        h = int(request.form.get('h'))
-        i = int(request.form.get('i'))
-        j = int(request.form.get('j'))
-        k = int(request.form.get('k'))
-        l = int(request.form.get('l'))
-        if c==None: c=0
-        if d==None: d = 0
-        if e==None: e = 0
-        if f==None: f = 0
-        if g==None: g = 0
-        if h==None: h = 0
-        if i==None: i = 0
-        if j == None: j = 0
-        if k == None: k = 0
-        if l == None: l = 0
+        c = request.form.get('c')
+        d = request.form.get('d')
+        e = request.form.get('e')
+        f = request.form.get('f')
+        g = request.form.get('g')
+        h = request.form.get('h')
+        i = request.form.get('i')
+        j = request.form.get('j')
+        k = request.form.get('k')
+        l = request.form.get('l')
+        c=int(c);d=int(d);e=int(e);f=int(f);g=int(g);h=int(h);i=int(i);j=int(j);k=int(k);l=int(l)
+
         money = c*30+d*30+e*30+f*30+g*30+h*30+i*30+j*30+k*30+l*30
         calorie = c*30+d*30+e*30+f*30+g*30+h*30+i*30+j*30+k*30+l*30
 
