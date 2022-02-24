@@ -611,11 +611,8 @@ def getspend():
                 a = []
                 b = 0
                 c = ''
-                for i in myresult:
-                    if len(myresult) == 1:
-                        f"購買日期{i[1]}\n品項:{i[2]}"
-                        f'\n總價{i[4]}元\n'
-                    elif i[1].strftime('%Y-%m-%d') not in a:
+              
+                    if i[1].strftime('%Y-%m-%d') not in a:
                         if b != 0:
                             c += f'\b\n總價{b}元\n'
                         a.append(i[1].strftime('%Y-%m-%d'))
