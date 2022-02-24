@@ -175,7 +175,7 @@ def member():
             if events[0]["source"]["type"] == "user":
                 userid = events[0]["source"]["userId"]
                 mycursor = connection.cursor()
-                mycursor.execute("SELECT users_id,user_name FROM users where users_id='{:s}'".format(userid))
+                mycursor.execute("SELECT line_id,user_name FROM users where line_id='{:s}'".format(userid))
 
                 myresult = mycursor.fetchall()
                 showlist = "".join(f"會員號碼 : {x[0]} 會員姓名 : {x[1]}" for x in myresult)
@@ -706,7 +706,7 @@ def line_login():
                                                      user="root",
                                                      password="cfi10202")
                 mycursor = connection.cursor()
-                command2 = "select userid from users"
+                command2 = "select line_id from users"
                 mycursor.execute(command2)
                 myresult = mycursor.fetchall()
                 a = []
