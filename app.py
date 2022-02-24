@@ -597,20 +597,35 @@ def getspend():
                                          password="cfi10202")
     body = request.json
     events = body["events"]
-#     print(body)
+    #     print(body)
     if "replyToken" in events[0]:
         payload = dict()
         replyToken = events[0]["replyToken"]
         payload["replyToken"] = replyToken
         if events[0]["type"] == "message":
             if events[0]["source"]["type"] == "user":
-                userid = events[0]["source"]["userId"]               
+                userid = events[0]["source"]["userId"]
                 mycursor = connection.cursor()
-                mycursor.execute("SELECT * FROM details where userid='{:s}'".format(userid))
+                mycursor.execute("SELECT * FROM project.linebot_view where line_id='{:s}'".format(userid))
                 myresult = mycursor.fetchall()
-                showlist = "".join(f"{x[3]} 數量 {x[4]}" for x in myresult)
+                a = []
+                b = 0
+                c = ''
+                for i in myresult:
+                    if i[1].strftime('%Y-%m-%d') not in a:
+                        if b != 0:
+                            c += f'\b\n總價{b}元\n'
+                        a.append(i[1].strftime('%Y-%m-%d'))
+                        c += f"購買日期{i[1]}\n品項:{i[2]},"
+                        b = 0
+                        b += i[4]
+                    elif i == myresult[len(myresult) - 1]:
+                        c += f'\b\n總價{b}元'
+                    else:
+                        c += f" {i[2]},"
+                        b += i[4]
 
-                messages = {"type": "text", "text": f"{showlist}"}
+                messages = {"type": "text", "text": f"{c}"}
                 return messages
 
 
