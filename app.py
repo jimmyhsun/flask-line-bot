@@ -187,7 +187,7 @@ def getNameEmojiMessage():
     one = {"type": "bubble",
            "hero": {"type": "image",
                     "url": "https://student04.herokuapp.com/static/one.jpg",
-                    "size": "full", "aspectRatio": "20:13", "aspectMode": "cover"},
+                    "size": "full", "aspectRatio": "15:13", "aspectMode": "cover"},
            "body": {"type": "box", "layout": "vertical", "spacing": "md",
                     "contents": [{"type": "text","text": "甜不辣","size": "3xl","weight": "bold"},
                                  {"type": "box", "layout": "vertical", "spacing": "sm",
@@ -204,7 +204,7 @@ def getNameEmojiMessage():
                                                     {"type": "text", "text": "熱量", "weight": "bold", "margin": "sm",
                                                      "flex": 0, "size": "lg"},
                                                     {"type": "text",
-                                                     "text": "210kcl","size": "lg", "align": "end",
+                                                     "text": "210kcal","size": "lg", "align": "end",
                                                      "color": "#aaaaaa"
                                                      }]}]}]}}
 
@@ -232,7 +232,7 @@ def getNameEmojiMessage():
                                                     {"type": "text", "text": "熱量", "weight": "bold", "margin": "sm",
                                                      "flex": 0, "size": "lg"},
                                                     {"type": "text",
-                                                     "text": "194kcl",
+                                                     "text": "194kcal",
                                                      "size": "lg",
                                                      "align": "end",
                                                      "color": "#aaaaaa"
@@ -264,7 +264,7 @@ def getNameEmojiMessage():
                                                     {"type": "text", "text": "熱量", "weight": "bold", "margin": "sm",
                                                      "flex": 0, "size": "lg"},
                                                     {"type": "text",
-                                                     "text": "192kcl",
+                                                     "text": "192kcal",
                                                      "size": "lg",
                                                      "align": "end",
                                                      "color": "#aaaaaa"
@@ -296,7 +296,7 @@ def getNameEmojiMessage():
                                                     {"type": "text", "text": "熱量", "weight": "bold", "margin": "sm",
                                                      "flex": 0, "size": "lg"},
                                                     {"type": "text",
-                                                     "text": "154kcl",
+                                                     "text": "154kcal",
                                                      "size": "lg",
                                                      "align": "end",
                                                      "color": "#aaaaaa"
@@ -328,7 +328,7 @@ def getNameEmojiMessage():
                                                     {"type": "text", "text": "熱量", "weight": "bold", "margin": "sm",
                                                      "flex": 0, "size": "lg"},
                                                     {"type": "text",
-                                                     "text": "202kcl",
+                                                     "text": "202kcal",
                                                      "size": "lg",
                                                      "align": "end",
                                                      "color": "#aaaaaa"
@@ -360,7 +360,7 @@ def getNameEmojiMessage():
                                                     {"type": "text", "text": "熱量", "weight": "bold", "margin": "sm",
                                                      "flex": 0, "size": "lg"},
                                                     {"type": "text",
-                                                     "text": "199kcl",
+                                                     "text": "199kcal",
                                                      "size": "lg",
                                                      "align": "end",
                                                      "color": "#aaaaaa"
@@ -392,7 +392,7 @@ def getNameEmojiMessage():
                                                     {"type": "text", "text": "熱量", "weight": "bold", "margin": "sm",
                                                      "flex": 0, "size": "lg"},
                                                     {"type": "text",
-                                                     "text": "221kcl",
+                                                     "text": "221kcal",
                                                      "size": "lg",
                                                      "align": "end",
                                                      "color": "#aaaaaa"
@@ -419,7 +419,7 @@ def getNameEmojiMessage():
                                                 "contents": [
                                                     {"type": "text", "text": "熱量", "weight": "bold", "margin": "sm",
                                                      "flex": 0, "size": "lg"},
-                                                    {"type": "text","text": "180kcl","size": "lg","align": "end",
+                                                    {"type": "text","text": "180kcal","size": "lg","align": "end",
                                                      "color": "#aaaaaa"
                                                      }]}]}]}}
     nine = {"type": "bubble",
@@ -444,13 +444,40 @@ def getNameEmojiMessage():
                                                     {"type": "text", "text": "熱量", "weight": "bold", "margin": "sm",
                                                      "flex": 0, "size": "lg"},
                                                     {"type": "text",
-                                                     "text": "226kcl",
+                                                     "text": "226kcal",
                                                      "size": "lg",
                                                      "align": "end",
                                                      "color": "#aaaaaa"
                                                      }]}]}]}}
+    ten = {"type": "bubble",
+            "hero": {"type": "image",
+                     "url": "https://student04.herokuapp.com/static/two.jpg",
+                     "size": "full", "aspectRatio": "15:13", "aspectMode": "cover"},
+            "body": {"type": "box", "layout": "vertical", "spacing": "md",
+                     "contents": [{"type": "text", "text": "海帶", "size": "3xl", "weight": "bold"},
+                                  {"type": "box", "layout": "vertical", "spacing": "sm",
+                                   "contents": [{"type": "box",
+                                                 "layout": "baseline",
+                                                 "contents": [{"type": "text", "text": "價錢",
+                                                               "weight": "bold", "margin": "sm", "flex": 0,
+                                                               "size": "lg"},
+                                                              {"type": "text",
+                                                               "text": "10元",
+                                                               "size": "lg",
+                                                               "align": "end",
+                                                               "color": "#aaaaaa"}]},
+                                                {"type": "box", "layout": "baseline",
+                                                 "contents": [
+                                                     {"type": "text", "text": "熱量", "weight": "bold", "margin": "sm",
+                                                      "flex": 0, "size": "lg"},
+                                                     {"type": "text",
+                                                      "text": "8kcal",
+                                                      "size": "lg",
+                                                      "align": "end",
+                                                      "color": "#aaaaaa"
+                                                      }]}]}]}}
 
-    message = {"type": "flex", "altText": "Flex Message", "contents": {"type": "carousel", "contents": [one, two,three,four,five,six,seven,eight,nine]}}
+    message = {"type": "flex", "altText": "Flex Message", "contents": {"type": "carousel", "contents": [one, two,three,four,five,six,seven,eight,nine,ten]}}
 
     return message
 
