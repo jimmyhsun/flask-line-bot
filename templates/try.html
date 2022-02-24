@@ -13,16 +13,28 @@
             <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
             <script>
                 function initializeLiff() {
-                        liff.init({liffId: '1656880552-mzJQQEzw'})
-                            .then(() => {
+                    liff.init({liffId: '後台取得的LIFF ID'}) 
+                        .then(() => {if (!liff.isLoggedIn()) {alert("用戶未登入");
+                                liff.login();
+                                } else {alert("用戶已登入");
+                                liff.getProfile()
+                                .then(profile => {const name = profile.displayName})
+                                .catch((err) => {console.log('error', err) });
+                                }
+                                }
+                                )
+                        .catch((err) => {console.log('初始化失敗')});
+                        // liff.init({liffId: '1656880552-mzJQQEzw'})
+                        //     .then(() => {
                                 
-                                initializeApp();})
-                            .catch((err) => {
-                            });
-                        liff.login({
-                                // 使用者登入後要去到哪個頁面
-                                redirectUri: 'https://student04.herokuapp.com/shoppingcar'
-                                });
+                        //         initializeApp();})
+                        //     .catch((err) => {
+                        //     });
+                        
+                        //     liff.login({
+                        //         // 使用者登入後要去到哪個頁面
+                        //         redirectUri: 'https://student04.herokuapp.com/shoppingcar'
+                        //         });
                         
                 initializeLiff(); }           
             </script>
