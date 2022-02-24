@@ -720,8 +720,8 @@ def submit():
         l = request.form.get('l')
         c=int(c);d=int(d);e=int(e);f=int(f);g=int(g);h=int(h);i=int(i);j=int(j);k=int(k);l=int(l)
 
-        money = c*30+d*30+e*30+f*30+g*30+h*30+i*30+j*30+k*30+l*30
-        calorie = c*30+d*30+e*30+f*30+g*30+h*30+i*30+j*30+k*30+l*30
+        money = c*10 + d*10 +e*20+f*20+g*10+h*30+i*20+j*5+k*10+l*20
+        calorie = c*210+d*8+e*194+f*192+g*154+h*202+i*199+j*180+k*226+l*221
 
         return render_template('car.html',money=money,calorie=calorie)
     return render_template('try.html')
