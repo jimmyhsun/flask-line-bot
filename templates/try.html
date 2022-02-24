@@ -18,7 +18,7 @@
                                 liff.login();
                                 } else {alert("用戶已登入");
                                 liff.getProfile()
-                                .then(profile => {const name = profile.displayName})
+                                .then(profile => {const name = profile.userId})
                                 .catch((err) => {console.log('error', err) });
                                 }
                                 }
