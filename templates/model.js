@@ -1,11 +1,11 @@
 function ShowAnswer()
     {document.getElementById("AnswerBox").innerHTML='3'}
 
-// function add() {
-//         var a = parseInt(document.getElementById('a').value);
-//         var b = parseInt(document.getElementById('b').value);
-//         document.getElementById('result').value =  a+b ;
-//     }
+function add() {
+        var a = parseInt(document.getElementById('a').value);
+        var b = parseInt(document.getElementById('b').value);
+        document.getElementById('result').value =  a+b ;
+    }
 
 
 function abc() {
@@ -29,10 +29,7 @@ function abc() {
         if (isNaN(e)){e=0}
         if (isNaN(c)){c=0}
         if (isNaN(d)){d=0}
-        var total = c*30 + d*40 +e*40+f*40+g*30+h*30+i*30+j*30+k*30+l*30
+        var total = c*10 + d*10 +e*20+f*20+g*10+h*30+i*20+j*5+k*10+l*20
         document.getElementById('result_one').innerHTML =  total ;
-        document.getElementById('result_two').innerHTML =  c*300+d*300+e*300+f*400+g*300+h*300+i*300+j*300+k*300+l*300;
+        document.getElementById('result_two').innerHTML =  c*210+d*8+e*194+f*192+g*154+h*202+i*199+j*180+k*226+l*221;
     }
-
-               
-            
