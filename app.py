@@ -750,6 +750,8 @@ def submit():
         calorie = c*210+d*8+e*194+f*192+g*154+h*202+i*199+j*180+k*226+l*221
 
         return render_template('car.html',money=money,calorie=calorie)
+    data = request.get_json()
+    print(data)
     return render_template('try.html')
 if __name__ == "__main__":
     app.debug = True
