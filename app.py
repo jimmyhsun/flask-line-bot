@@ -750,15 +750,11 @@ def submit():
         calorie = c*210+d*8+e*194+f*192+g*154+h*202+i*199+j*180+k*226+l*221
 
         return render_template('car.html',money=money,calorie=calorie)
-    code = request.args.get("code", None)
-    HEADERS = {'Content-Type': 'application/x-www-form-urlencoded'}
-    url = "https://api.line.me/oauth2/v2.1/token"
-    FormData = {"grant_type": 'authorization_code', "code": code, "redirect_uri": F"{end_point}/line_login",
-                "client_id": line_login_id, "client_secret": line_login_secret}
-    data = parse.urlencode(FormData)
-    content = requests.post(url=url, headers=HEADERS, data=data).text
-    content = json.loads(content)
+
     url = "https://api.line.me/v2/profile"
+    content = requests.post(url=url).text
+    content = json.loads(content)
+    
     HEADERS = {'Authorization': content["token_type"] + " " + content["access_token"]}
     content = requests.get(url=url, headers=HEADERS).text
     content = json.loads(content)
