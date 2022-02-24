@@ -100,6 +100,17 @@ def index():
                             }
                         ]
                 replyMessage(payload)
+        elif events[0]["type"] == "follow":
+            if events[0]["source"]["type"] == "user":
+               connection = mysql.connector.connect(host="35.221.178.251",
+                                                    database="project",
+                                                    user="root",
+                                                    password="cfi10202")
+                userid = events[0]["source"]["userId"]
+                mycursor = connection.cursor()
+                command = "insert into users(line_id) values('{:s}');".format(userid)
+                mycursor.execute(command)
+                connection.commit()
             
 
         elif events[0]["type"] == "postback":
