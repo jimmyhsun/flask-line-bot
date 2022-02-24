@@ -15,8 +15,7 @@ app = Flask(__name__, static_url_path='/static')
 UPLOAD_FOLDER = 'static'
 ALLOWED_EXTENSIONS = set(['pdf', 'png', 'jpg', 'jpeg', 'gif'])
 
-car={"甜不辣":"30元","米血糕":"40元"}
-acc=[]
+
 config = configparser.ConfigParser()
 config.read('config.ini')
 
@@ -101,8 +100,7 @@ def index():
                             }
                         ]
                 replyMessage(payload)
-            elif events[0]["postback"]["data"] == "30元":
-                 car_one.append(30)
+            
 
         elif events[0]["type"] == "postback":
             if "params" in events[0]["postback"]:
@@ -114,11 +112,7 @@ def index():
                         }
                     ]
                 replyMessage(payload)
-            elif events[0]["postback"]["data"] == "30元":
-                 acc.append(("甜不辣",30))
-                
-            elif events[0]["postback"]["data"] == "40元":
-                 acc.append(("米血糕",40))
+
                  
             else:
                 data = json.loads(events[0]["postback"]["data"])
@@ -190,71 +184,274 @@ def member():
                 return messages
 
 def getNameEmojiMessage():
-    # message={"type": "flex","altText": "Flex Message","contents":{"type":"carousel","contents":[one]}}
-    one={"type": "bubble",
-         "hero": {"type": "image",
-                        "url": "https://student04.herokuapp.com/static/quality.jpg",
-                        "size": "full", "aspectRatio": "20:13","aspectMode": "cover"},
-          "body": {"type": "box","layout": "vertical","spacing": "md",
-                   "contents": [{"type": "text",
-                                "text": "甜不辣",
-                                "size": "3xl",
-                                "weight": "bold"},
-                                {"type": "box","layout": "vertical","spacing": "sm",
-                                     "contents": [{"type": "box",
-                                                    "layout": "baseline",
-                                                    "contents": [{"type": "text","text": "價錢",
-                                                                  "weight": "bold",
-                                                                   "margin": "sm",
-                                                                   "flex": 0,
-                                                                   "size": "lg"},
-                                                                  {"type": "text",
-                                                                    "text": "30元",
-                                                                    "size": "lg",
-                                                                    "align": "end",
-                                                                    "color": "#aaaaaa"}]},
-                                                   {"type": "box","layout": "baseline",
-                                                    "contents": [{"type": "text","text": "熱量","weight": "bold","margin": "sm","flex": 0,"size": "lg"},
-                          {"type": "text",
-                            "text": "550kcl",
-                            "size": "lg",
-                            "align": "end",
-                            "color": "#aaaaaa"
-                          }]}]}]}}
+    one = {"type": "bubble",
+           "hero": {"type": "image",
+                    "url": "https://student04.herokuapp.com/static/one.jpg",
+                    "size": "full", "aspectRatio": "20:13", "aspectMode": "cover"},
+           "body": {"type": "box", "layout": "vertical", "spacing": "md",
+                    "contents": [{"type": "text","text": "甜不辣","size": "3xl","weight": "bold"},
+                                 {"type": "box", "layout": "vertical", "spacing": "sm",
+                                  "contents": [{"type": "box","layout": "baseline",
+                                                "contents": [{"type": "text", "text": "價錢",
+                                                              "weight": "bold","margin": "sm",
+                                                              "flex": 0,"size": "lg"},
+                                                             {"type": "text",
+                                                              "text": "10元",
+                                                              "size": "lg","align": "end",
+                                                              "color": "#aaaaaa"}]},
+                                               {"type": "box", "layout": "baseline",
+                                                "contents": [
+                                                    {"type": "text", "text": "熱量", "weight": "bold", "margin": "sm",
+                                                     "flex": 0, "size": "lg"},
+                                                    {"type": "text",
+                                                     "text": "210kcl","size": "lg", "align": "end",
+                                                     "color": "#aaaaaa"
+                                                     }]}]}]}}
 
-    two={"type": "bubble",
-         "hero": {"type": "image",
-                        "url": "https://student04.herokuapp.com/static/quality.jpg",
-                        "size": "full", "aspectRatio": "20:13","aspectMode": "cover"},
-          "body": {"type": "box","layout": "vertical","spacing": "md",
-                   "contents": [{"type": "text",
-                                "text": "米血糕",
-                                "size": "3xl",
-                                "weight": "bold"},
-                                {"type": "box","layout": "vertical","spacing": "sm",
-                                 "contents": [{"type": "box",
-                                                    "layout": "baseline",
-                                                    "contents": [{"type": "text","text": "價錢",
-                                                                  "weight": "bold",
-                                                                   "margin": "sm",
-                                                                   "flex": 0,
-                                                                   "size": "lg"},
-                                                                  {"type": "text",
-                                                                    "text": "40元",
-                                                                    "size": "lg",
-                                                                    "align": "end",
-                                                                    "color": "#aaaaaa"}]},
-                                                   {"type": "box","layout": "baseline",
-                                                    "contents": [{"type": "text","text": "熱量","weight": "bold","margin": "sm","flex": 0,"size": "lg"},
-                          {"type": "text",
-                            "text": "560kcl",
-                            "size": "lg",
-                            "align": "end",
-                            "color": "#aaaaaa"
-                          }]}]}]}}
+    two = {"type": "bubble",
+           "hero": {"type": "image",
+                    "url": "https://student04.herokuapp.com/static/two.jpg",
+                    "size": "full", "aspectRatio": "20:13", "aspectMode": "cover"},
+           "body": {"type": "box", "layout": "vertical", "spacing": "md",
+                    "contents": [{"type": "text","text": "米血","size": "3xl","weight": "bold"},
+                                 {"type": "box", "layout": "vertical", "spacing": "sm",
+                                  "contents": [{"type": "box",
+                                                "layout": "baseline",
+                                                "contents": [{"type": "text", "text": "價錢",
+                                                              "weight": "bold",
+                                                              "margin": "sm",
+                                                              "flex": 0,
+                                                              "size": "lg"},
+                                                             {"type": "text",
+                                                              "text": "20元",
+                                                              "size": "lg",
+                                                              "align": "end",
+                                                              "color": "#aaaaaa"}]},
+                                               {"type": "box", "layout": "baseline",
+                                                "contents": [
+                                                    {"type": "text", "text": "熱量", "weight": "bold", "margin": "sm",
+                                                     "flex": 0, "size": "lg"},
+                                                    {"type": "text",
+                                                     "text": "194kcl",
+                                                     "size": "lg",
+                                                     "align": "end",
+                                                     "color": "#aaaaaa"
+                                                     }]}]}]}}
+    three = {"type": "bubble",
+           "hero": {"type": "image",
+                    "url": "https://student04.herokuapp.com/static/two.jpg",
+                    "size": "full", "aspectRatio": "20:13", "aspectMode": "cover"},
+           "body": {"type": "box", "layout": "vertical", "spacing": "md",
+                    "contents": [{"type": "text",
+                                  "text": "大豆干",
+                                  "size": "3xl",
+                                  "weight": "bold"},
+                                 {"type": "box", "layout": "vertical", "spacing": "sm",
+                                  "contents": [{"type": "box",
+                                                "layout": "baseline",
+                                                "contents": [{"type": "text", "text": "價錢",
+                                                              "weight": "bold",
+                                                              "margin": "sm",
+                                                              "flex": 0,
+                                                              "size": "lg"},
+                                                             {"type": "text",
+                                                              "text": "20元",
+                                                              "size": "lg",
+                                                              "align": "end",
+                                                              "color": "#aaaaaa"}]},
+                                               {"type": "box", "layout": "baseline",
+                                                "contents": [
+                                                    {"type": "text", "text": "熱量", "weight": "bold", "margin": "sm",
+                                                     "flex": 0, "size": "lg"},
+                                                    {"type": "text",
+                                                     "text": "192kcl",
+                                                     "size": "lg",
+                                                     "align": "end",
+                                                     "color": "#aaaaaa"
+                                                     }]}]}]}}
+    four = {"type": "bubble",
+           "hero": {"type": "image",
+                    "url": "https://student04.herokuapp.com/static/quality.jpg",
+                    "size": "full", "aspectRatio": "20:13", "aspectMode": "cover"},
+           "body": {"type": "box", "layout": "vertical", "spacing": "md",
+                    "contents": [{"type": "text",
+                                  "text": "鴨心",
+                                  "size": "3xl",
+                                  "weight": "bold"},
+                                 {"type": "box", "layout": "vertical", "spacing": "sm",
+                                  "contents": [{"type": "box",
+                                                "layout": "baseline",
+                                                "contents": [{"type": "text", "text": "價錢",
+                                                              "weight": "bold",
+                                                              "margin": "sm",
+                                                              "flex": 0,
+                                                              "size": "lg"},
+                                                             {"type": "text",
+                                                              "text": "10元",
+                                                              "size": "lg",
+                                                              "align": "end",
+                                                              "color": "#aaaaaa"}]},
+                                               {"type": "box", "layout": "baseline",
+                                                "contents": [
+                                                    {"type": "text", "text": "熱量", "weight": "bold", "margin": "sm",
+                                                     "flex": 0, "size": "lg"},
+                                                    {"type": "text",
+                                                     "text": "154kcl",
+                                                     "size": "lg",
+                                                     "align": "end",
+                                                     "color": "#aaaaaa"
+                                                     }]}]}]}}
+    five = {"type": "bubble",
+           "hero": {"type": "image",
+                    "url": "https://student04.herokuapp.com/static/quality.jpg",
+                    "size": "full", "aspectRatio": "20:13", "aspectMode": "cover"},
+           "body": {"type": "box", "layout": "vertical", "spacing": "md",
+                    "contents": [{"type": "text",
+                                  "text": "鴨珍",
+                                  "size": "3xl",
+                                  "weight": "bold"},
+                                 {"type": "box", "layout": "vertical", "spacing": "sm",
+                                  "contents": [{"type": "box",
+                                                "layout": "baseline",
+                                                "contents": [{"type": "text", "text": "價錢",
+                                                              "weight": "bold",
+                                                              "margin": "sm",
+                                                              "flex": 0,
+                                                              "size": "lg"},
+                                                             {"type": "text",
+                                                              "text": "30元",
+                                                              "size": "lg",
+                                                              "align": "end",
+                                                              "color": "#aaaaaa"}]},
+                                               {"type": "box", "layout": "baseline",
+                                                "contents": [
+                                                    {"type": "text", "text": "熱量", "weight": "bold", "margin": "sm",
+                                                     "flex": 0, "size": "lg"},
+                                                    {"type": "text",
+                                                     "text": "202kcl",
+                                                     "size": "lg",
+                                                     "align": "end",
+                                                     "color": "#aaaaaa"
+                                                     }]}]}]}}
+    six = {"type": "bubble",
+           "hero": {"type": "image",
+                    "url": "https://student04.herokuapp.com/static/quality.jpg",
+                    "size": "full", "aspectRatio": "20:13", "aspectMode": "cover"},
+           "body": {"type": "box", "layout": "vertical", "spacing": "md",
+                    "contents": [{"type": "text",
+                                  "text": "豆皮",
+                                  "size": "3xl",
+                                  "weight": "bold"},
+                                 {"type": "box", "layout": "vertical", "spacing": "sm",
+                                  "contents": [{"type": "box",
+                                                "layout": "baseline",
+                                                "contents": [{"type": "text", "text": "價錢",
+                                                              "weight": "bold",
+                                                              "margin": "sm",
+                                                              "flex": 0,
+                                                              "size": "lg"},
+                                                             {"type": "text",
+                                                              "text": "20元",
+                                                              "size": "lg",
+                                                              "align": "end",
+                                                              "color": "#aaaaaa"}]},
+                                               {"type": "box", "layout": "baseline",
+                                                "contents": [
+                                                    {"type": "text", "text": "熱量", "weight": "bold", "margin": "sm",
+                                                     "flex": 0, "size": "lg"},
+                                                    {"type": "text",
+                                                     "text": "199kcl",
+                                                     "size": "lg",
+                                                     "align": "end",
+                                                     "color": "#aaaaaa"
+                                                     }]}]}]}}
+    seven = {"type": "bubble",
+           "hero": {"type": "image",
+                    "url": "https://student04.herokuapp.com/static/quality.jpg",
+                    "size": "full", "aspectRatio": "20:13", "aspectMode": "cover"},
+           "body": {"type": "box", "layout": "vertical", "spacing": "md",
+                    "contents": [{"type": "text",
+                                  "text": "米腸",
+                                  "size": "3xl",
+                                  "weight": "bold"},
+                                 {"type": "box", "layout": "vertical", "spacing": "sm",
+                                  "contents": [{"type": "box",
+                                                "layout": "baseline",
+                                                "contents": [{"type": "text", "text": "價錢",
+                                                              "weight": "bold",
+                                                              "margin": "sm",
+                                                              "flex": 0,
+                                                              "size": "lg"},
+                                                             {"type": "text",
+                                                              "text": "20元",
+                                                              "size": "lg",
+                                                              "align": "end",
+                                                              "color": "#aaaaaa"}]},
+                                               {"type": "box", "layout": "baseline",
+                                                "contents": [
+                                                    {"type": "text", "text": "熱量", "weight": "bold", "margin": "sm",
+                                                     "flex": 0, "size": "lg"},
+                                                    {"type": "text",
+                                                     "text": "221kcl",
+                                                     "size": "lg",
+                                                     "align": "end",
+                                                     "color": "#aaaaaa"
+                                                     }]}]}]}}
+    eight = {"type": "bubble",
+           "hero": {"type": "image",
+                    "url": "https://student04.herokuapp.com/static/quality.jpg",
+                    "size": "full", "aspectRatio": "20:13", "aspectMode": "cover"},
+           "body": {"type": "box", "layout": "vertical", "spacing": "md",
+                    "contents": [{"type": "text","text": "水晶餃","size": "3xl","weight": "bold"},
+                                 {"type": "box", "layout": "vertical", "spacing": "sm",
+                                  "contents": [{"type": "box","layout": "baseline",
+                                                "contents": [{"type": "text", "text": "價錢",
+                                                              "weight": "bold",
+                                                              "margin": "sm",
+                                                              "flex": 0,
+                                                              "size": "lg"},
+                                                             {"type": "text",
+                                                              "text": "5元",
+                                                              "size": "lg",
+                                                              "align": "end",
+                                                              "color": "#aaaaaa"}]},
+                                               {"type": "box", "layout": "baseline",
+                                                "contents": [
+                                                    {"type": "text", "text": "熱量", "weight": "bold", "margin": "sm",
+                                                     "flex": 0, "size": "lg"},
+                                                    {"type": "text","text": "180kcl","size": "lg","align": "end",
+                                                     "color": "#aaaaaa"
+                                                     }]}]}]}}
+    nine = {"type": "bubble",
+           "hero": {"type": "image",
+                    "url": "https://student04.herokuapp.com/static/quality.jpg",
+                    "size": "full", "aspectRatio": "20:13", "aspectMode": "cover"},
+           "body": {"type": "box", "layout": "vertical", "spacing": "md",
+                    "contents": [{"type": "text","text": "小熱狗","size": "3xl","weight": "bold"},
+                                 {"type": "box", "layout": "vertical", "spacing": "sm",
+                                  "contents": [{"type": "box",
+                                                "layout": "baseline",
+                                                "contents": [{"type": "text", "text": "價錢",
+                                                              "weight": "bold","margin": "sm","flex": 0,
+                                                              "size": "lg"},
+                                                             {"type": "text",
+                                                              "text": "10元",
+                                                              "size": "lg",
+                                                              "align": "end",
+                                                              "color": "#aaaaaa"}]},
+                                               {"type": "box", "layout": "baseline",
+                                                "contents": [
+                                                    {"type": "text", "text": "熱量", "weight": "bold", "margin": "sm",
+                                                     "flex": 0, "size": "lg"},
+                                                    {"type": "text",
+                                                     "text": "226kcl",
+                                                     "size": "lg",
+                                                     "align": "end",
+                                                     "color": "#aaaaaa"
+                                                     }]}]}]}}
 
-    message = {"type": "flex", "altText": "Flex Message", "contents": {"type": "carousel", "contents": [one,two]}}
-             
+    message = {"type": "flex", "altText": "Flex Message", "contents": {"type": "carousel", "contents": [one, two,three,four,five,six,seven,eight,nine]}}
+
     return message
 
 def getCarouselMessage(data):
@@ -342,18 +539,6 @@ def getMRTVideoMessage():
     message["originalContentUrl"] = F"{end_point}/static/taipei_101_video.mp4"
     message["previewImageUrl"] = F"{end_point}/static/taipei_101.jpeg"
     return message
-
-
-# def getMRTSoundMessage():
-#     message = dict()
-#     message["type"] = "audio"
-#     message["originalContentUrl"] = F"{end_point}/static/mrt_sound.m4a"
-#     import audioread
-#     with audioread.audio_open('static/mrt_sound.m4a') as f:
-#         # totalsec contains the length in float
-#         totalsec = f.duration
-#     message["duration"] = totalsec * 1000
-#     return message
 
 
 def getTaipei101ImageMessage(originalContentUrl=F"{end_point}/static/taipei_101.jpeg"):
