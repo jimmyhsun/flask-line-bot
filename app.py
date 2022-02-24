@@ -175,7 +175,7 @@ def member():
             if events[0]["source"]["type"] == "user":
                 userid = events[0]["source"]["userId"]
                 mycursor = connection.cursor()
-                mycursor.execute("SELECT id,user_name FROM users where userid='{:s}'".format(userid))
+                mycursor.execute("SELECT users_id,user_name FROM users where users_id='{:s}'".format(userid))
 
                 myresult = mycursor.fetchall()
                 showlist = "".join(f"會員號碼 : {x[0]} 會員姓名 : {x[1]}" for x in myresult)
@@ -697,7 +697,7 @@ def line_login():
                 if userID in a:
                     return render_template('profile.html', name=name, userID=userID)
                 else:
-                    command = "insert into users(userid, user_name) values('{:s}','{:s}');".format(userID, name)
+                    command = "insert into users(line_id, user_name) values('{:s}','{:s}');".format(userID, name)
                     mycursor.execute(command)
                     connection.commit()
                     return render_template('profile.html', name=name,  userID=userID)
