@@ -23,6 +23,10 @@
                                         }
                                 )
                         .catch((err) => {console.log('初始化失敗')});
+                        liff.getProfile()
+                            .then(function(profile) {
+                            console.log(profile);
+                            });
                         // liff.init({liffId: '1656880552-mzJQQEzw'})
                         //     .then(() => {
                                 
