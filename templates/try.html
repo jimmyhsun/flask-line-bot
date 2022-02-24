@@ -25,8 +25,12 @@
                         .catch((err) => {console.log('初始化失敗')});
                         liff.getProfile()
                             .then(function(profile) {
-                            console.log(profile);
-                            });
+                                const userId = profile.userId;
+                                const name = profile.displayName;
+                                const pictureUrl = profile.pictureUrl;
+                                const statusMessage = profile.statusMessage;
+                            
+                            }).catch(function (error) {console.log('error', err)});
                         // liff.init({liffId: '1656880552-mzJQQEzw'})
                         //     .then(() => {
                                 
