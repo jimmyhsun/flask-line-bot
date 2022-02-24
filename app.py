@@ -611,19 +611,18 @@ def getspend():
                 a = []
                 b = 0
                 c = ''
-              
-                    if i[1].strftime('%Y-%m-%d') not in a:
-                        if b != 0:
-                            c += f'\b\n總價{b}元\n'
-                        a.append(i[1].strftime('%Y-%m-%d'))
-                        c += f"購買日期{i[1]}\n品項:{i[2]},"
-                        b = 0
-                        b += i[4]
-                    elif i == myresult[len(myresult) - 1]:
+                if i[1].strftime('%Y-%m-%d') not in a:
+                     if b != 0:
+                        c += f'\b\n總價{b}元\n'
+                     a.append(i[1].strftime('%Y-%m-%d'))
+                     c += f"購買日期{i[1]}\n品項:{i[2]},"
+                     b = 0
+                     b += i[4]
+                elif i == myresult[len(myresult) - 1]:
                         c += f'\b\n總價{b}元'
-                    else:
-                        c += f" {i[2]},"
-                        b += i[4]
+                else:
+                     c += f" {i[2]},"
+                     b += i[4]
 
                 messages = {"type": "text", "text": f"{c}"}
                 return messages
