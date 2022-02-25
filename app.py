@@ -733,59 +733,83 @@ def line_login():
 
 @app.route("/shoppingcar", methods=['GET', 'POST'])
 def submit():
-    if request.method == 'POST':
-        c = request.form.get('c')
-        d = request.form.get('d')
-        e = request.form.get('e')
-        f = request.form.get('f')
-        g = request.form.get('g')
-        h = request.form.get('h')
-        i = request.form.get('i')
-        j = request.form.get('j')
-        k = request.form.get('k')
-        l = request.form.get('l')
-        # m = request.form.get('m')
-        c = int(c);
-        d = int(d);
-        e = int(e);
-        f = int(f);
-        g = int(g);
-        h = int(h);
-        i = int(i);
-        j = int(j);
-        k = int(k);
-        l = int(l);
-        # m = int(m)
+    if request.method == 'GET':
+        code = request.args.get("code", None)
+        state = request.args.get("state", None)
+        if code and state:
+            if request.method == 'POST':
+                HEADERS = {'Content-Type': 'application/x-www-form-urlencoded'}
+                url = "https://api.line.me/oauth2/v2.1/token"
+                FormData = {"grant_type": 'authorization_code', "code": code,
+                            "redirect_uri": F"{end_point}/shoppingcar",
+                            "client_id": line_login_id, "client_secret": line_login_secret}
+                data = parse.urlencode(FormData)
 
-        money = c * 10 + d * 10 + e * 20 + f * 20 + g * 10 + h * 30 + i * 20 + j * 5 + k * 10 + l * 20
-        calorie = c * 210 + d * 8 + e * 194 + f * 192 + g * 154 + h * 202 + i * 199 + j * 180 + k * 226 + l * 221
-        gotoboss(c,d,e,f,g,h,i,j,k,l)
-        return render_template('car.html', money=money, calorie=calorie)
-    return render_template('try.html')
+                content = requests.post(url=url, headers=HEADERS, data=data).text
+                content = json.loads(content)
 
-def gotoboss(c,d,e,f,g,h,i,j,k,l) :
+                url = "https://api.line.me/v2/profile"
+                HEADERS = {'Authorization': content["token_type"] + " " + content["access_token"]}
+                content = requests.get(url=url, headers=HEADERS).text
+                content = json.loads(content)
+                userID = content["userId"]
+                print(content)
+                c = request.form.get('c')
+                d = request.form.get('d')
+                e = request.form.get('e')
+                f = request.form.get('f')
+                g = request.form.get('g')
+                h = request.form.get('h')
+                i = request.form.get('i')
+                j = request.form.get('j')
+                k = request.form.get('k')
+                l = request.form.get('l')
+                # m = request.form.get('m')
+                c = int(c);
+                d = int(d);
+                e = int(e);
+                f = int(f);
+                g = int(g);
+                h = int(h);
+                i = int(i);
+                j = int(j);
+                k = int(k);
+                l = int(l);
+                # m = int(m)
+
+                money = c * 10 + d * 10 + e * 20 + f * 20 + g * 10 + h * 30 + i * 20 + j * 5 + k * 10 + l * 20
+                calorie = c * 210 + d * 8 + e * 194 + f * 192 + g * 154 + h * 202 + i * 199 + j * 180 + k * 226 + l * 221
+                gotoboss(c,d,e,f,g,h,i,j,k,l,userID)
+                return render_template('car.html', money=money, calorie=calorie)
+        else: return render_template('try.html',client_id=line_login_id,
+                                   end_point=end_point)
+
+def gotoboss(c,d,e,f,g,h,i,j,k,l,userID) :
     # assd=[c,d,e,f,g,h,i,j,k,l]
 
     connection = mysql.connector.connect(host="35.221.178.251",
                                          database="project",
                                          user="root",
                                          password="cfi10202")
+
     mycursor = connection.cursor()
-    code = request.args.get("code", None)
-    HEADERS = {'Content-Type': 'application/x-www-form-urlencoded'}
-    url = "https://api.line.me/oauth2/v2.1/token"
-    FormData = {"grant_type": 'authorization_code', "code": code, "redirect_uri": F"{end_point}/shoppingcar",
-                "client_id": line_login_id, "client_secret": line_login_secret}
-    data = parse.urlencode(FormData)
-    content = requests.post(url=url, headers=HEADERS, data=data).text
-    content = json.loads(content)
-    url = "https://api.line.me/v2/profile"
-    HEADERS = {'Authorization': content["token_type"] + " " + content["access_token"]}
-    content = requests.get(url=url, headers=HEADERS).text
-    content = json.loads(content)
-    userID = content["userId"]
-    print(content)
-    
+
+    # HEADERS = {'Content-Type': 'application/x-www-form-urlencoded'}
+    # url = "https://api.line.me/oauth2/v2.1/token"
+    # FormData = {"grant_type": 'authorization_code', "code": code, "redirect_uri": F"{end_point}/shoppingcar",
+    #             "client_id": line_login_id, "client_secret": line_login_secret}
+    # data = parse.urlencode(FormData)
+    #
+    # content = requests.post(url=url, headers=HEADERS, data=data).text
+    # content = json.loads(content)
+    #
+    # url = "https://api.line.me/v2/profile"
+    # HEADERS = {'Authorization': content["token_type"] + " " + content["access_token"]}
+    # content = requests.get(url=url, headers=HEADERS).text
+    # content = json.loads(content)
+    # userID = content["userId"]
+    # print(content)
+
     if c !=0 :
             command = "insert into linebot_test(line_id,products_name,quantity) values('{:s}','{:s}','{:d}');".format(userID, "甜不辣",c)
             mycursor.execute(command)
