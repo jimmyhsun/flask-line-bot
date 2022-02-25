@@ -687,6 +687,7 @@ def upload_file():
 
 @app.route('/line_login', methods=['GET'])
 def line_login():
+    global userID
     if request.method == 'GET':
         code = request.args.get("code", None)
         state = request.args.get("state", None)
@@ -728,7 +729,7 @@ def submit():
                 j = request.form.get('j')
                 k = request.form.get('k')
                 l = request.form.get('l')
-                m = request.form.get('m')
+#                 m = request.form.get('m')
                 c = int(c);
                 d = int(d);
                 e = int(e);
@@ -739,11 +740,11 @@ def submit():
                 j = int(j);
                 k = int(k);
                 l = int(l);
-                m = int(m)
+#                 m = int(m)
 
                 money = c * 10 + d * 10 + e * 20 + f * 20 + g * 10 + h * 30 + i * 20 + j * 5 + k * 10 + l * 20
                 calorie = c * 210 + d * 8 + e * 194 + f * 192 + g * 154 + h * 202 + i * 199 + j * 180 + k * 226 + l * 221
-                gotoboss(c, d, e, f, g, h, i, j, k, l, m)
+                gotoboss(c, d, e, f, g, h, i, j, k, l, userID)
                 return render_template('car.html', money=money, calorie=calorie)
     else:
             return render_template('try.html')
