@@ -691,80 +691,65 @@ def line_login():
         code = request.args.get("code", None)
         state = request.args.get("state", None)
 
-
         if code and state:
-                HEADERS = {'Content-Type': 'application/x-www-form-urlencoded'}
-                url = "https://api.line.me/oauth2/v2.1/token"
-                FormData = {"grant_type": 'authorization_code', "code": code, "redirect_uri": F"{end_point}/line_login",
-                            "client_id": line_login_id, "client_secret": line_login_secret}
-                data = parse.urlencode(FormData)
-                content = requests.post(url=url, headers=HEADERS, data=data).text
-                content = json.loads(content)
-                url = "https://api.line.me/v2/profile"
-                HEADERS = {'Authorization': content["token_type"] + " " + content["access_token"]}
-                content = requests.get(url=url, headers=HEADERS).text
-                content = json.loads(content)
-                name = content["displayName"]
-                userID = content["userId"]
-                # pictureURL = content["pictureUrl"]
-                # statusMessage = content["statusMessage"]
-                print(content)
-                connection = mysql.connector.connect(host="35.221.178.251",
-                                                     database="project",
-                                                     user="root",
-                                                     password="cfi10202")
-                mycursor = connection.cursor()
-                command2 = "select line_id from users"
-                mycursor.execute(command2)
-                myresult = mycursor.fetchall()
-                a = []
-                for i in myresult:
-                    a.append(f"{i[0]}")
-                if userID in a:
-                    return render_template('profile.html', name=name, userID=userID)
-                else:
-                    command = "insert into users(line_id, user_name) values('{:s}','{:s}');".format(userID, name)
-                    mycursor.execute(command)
-                    connection.commit()
-                    return render_template('profile.html', name=name,  userID=userID)
+            HEADERS = {'Content-Type': 'application/x-www-form-urlencoded'}
+            url = "https://api.line.me/oauth2/v2.1/token"
+            FormData = {"grant_type": 'authorization_code', "code": code, "redirect_uri": F"{end_point}/line_login",
+                        "client_id": line_login_id, "client_secret": line_login_secret}
+            data = parse.urlencode(FormData)
+            content = requests.post(url=url, headers=HEADERS, data=data).text
+            content = json.loads(content)
+            url = "https://api.line.me/v2/profile"
+            HEADERS = {'Authorization': content["token_type"] + " " + content["access_token"]}
+            content = requests.get(url=url, headers=HEADERS).text
+            content = json.loads(content)
+            name = content["displayName"]
+            userID = content["userId"]
+            # pictureURL = content["pictureUrl"]
+            # statusMessage = content["statusMessage"]
+            print(content)
+
+            return redirect(f'https://student04.herokuapp.com/shoppingcar')
         else:
-            return render_template('login.html', client_id=line_login_id,
-                                    end_point=end_point)
+            return redirect(f'https://access.line.me/oauth2/v2.1/authorize?response_type=code&client_id={line_login_id}&redirect_uri={end_point}/shoppingcar&scope=profile%20openid%20email&state=123453sdfgfd')
+
 
 @app.route("/shoppingcar", methods=['GET', 'POST'])
 def submit():
-        if request.method == 'POST':
 
-                    c = request.form.get('c')
-                    d = request.form.get('d')
-                    e = request.form.get('e')
-                    f = request.form.get('f')
-                    g = request.form.get('g')
-                    h = request.form.get('h')
-                    i = request.form.get('i')
-                    j = request.form.get('j')
-                    k = request.form.get('k')
-                    l = request.form.get('l')
-                    m = request.form.get('m')
-                    c = int(c);
-                    d = int(d);
-                    e = int(e);
-                    f = int(f);
-                    g = int(g);
-                    h = int(h);
-                    i = int(i);
-                    j = int(j);
-                    k = int(k);
-                    l = int(l);
-                    m = int(m)
+    if request.method == 'POST':
+                c = request.form.get('c')
+                d = request.form.get('d')
+                e = request.form.get('e')
+                f = request.form.get('f')
+                g = request.form.get('g')
+                h = request.form.get('h')
+                i = request.form.get('i')
+                j = request.form.get('j')
+                k = request.form.get('k')
+                l = request.form.get('l')
+                m = request.form.get('m')
+                c = int(c);
+                d = int(d);
+                e = int(e);
+                f = int(f);
+                g = int(g);
+                h = int(h);
+                i = int(i);
+                j = int(j);
+                k = int(k);
+                l = int(l);
+                m = int(m)
 
-                    money = c * 10 + d * 10 + e * 20 + f * 20 + g * 10 + h * 30 + i * 20 + j * 5 + k * 10 + l * 20
-                    calorie = c * 210 + d * 8 + e * 194 + f * 192 + g * 154 + h * 202 + i * 199 + j * 180 + k * 226 + l * 221
-                    gotoboss(c,d,e,f,g,h,i,j,k,l)
-                    return render_template('car.html', money=money, calorie=calorie)
-        else: return render_template('try.html')
+                money = c * 10 + d * 10 + e * 20 + f * 20 + g * 10 + h * 30 + i * 20 + j * 5 + k * 10 + l * 20
+                calorie = c * 210 + d * 8 + e * 194 + f * 192 + g * 154 + h * 202 + i * 199 + j * 180 + k * 226 + l * 221
+                gotoboss(c, d, e, f, g, h, i, j, k, l, m)
+                return render_template('car.html', money=money, calorie=calorie)
+    else:
+            return render_template('try.html')
 
-def gotoboss(c,d,e,f,g,h,i,j,k,l,m) :
+
+def gotoboss(c, d, e, f, g, h, i, j, k, l, userID):
     # assd=[c,d,e,f,g,h,i,j,k,l]
 
     connection = mysql.connector.connect(host="35.221.178.251",
@@ -774,48 +759,46 @@ def gotoboss(c,d,e,f,g,h,i,j,k,l,m) :
 
     mycursor = connection.cursor()
 
-
-
-    if c !=0 :
-            command = "insert into linebot_test(line_id,products_name,quantity) values('{:s}','{:s}','{:d}');".format(m, "甜不辣",c)
-            mycursor.execute(command)
-            connection.commit()
-    if d!=0 :
-            command = "insert into linebot_test(line_id,products_name,quantity) values('{:s}','{:s}','{:d}');".format(m, "海帶",d)
-            mycursor.execute(command)
-            connection.commit()
-    if e!=0 :
-            command = "insert into linebot_test(line_id,products_name,quantity) values('{:s}','{:s}','{:d}');".format(m, "米血",e)
-            mycursor.execute(command)
-            connection.commit()
-    elif f!=0 :
-            command = "insert into linebot_test(line_id,products_name,quantity) values('{:s}','{:s}','{:d}');".format(m, "大豆干",f)
-            mycursor.execute(command)
-            connection.commit()
-    elif g!=0 :
-            command = "insert into linebot_test(line_id,products_name,quantity) values('{:s}','{:s}','{:d}');".format(m,"鴨心",g)
-            mycursor.execute(command)
-            connection.commit()
-    elif h!=0 :
-            command = "insert into linebot_test(line_id,products_name,quantity) values('{:s}','{:s}','{:d}');".format(m,"鴨珍",h)
-            mycursor.execute(command)
-            connection.commit()
-    elif i!=0 :
-            command = "insert into linebot_test(line_id,products_name,quantity) values('{:s}','{:s}','{:d}');".format(m,"豆皮",i)
-            mycursor.execute(command)
-            connection.commit()
-    elif j!=0 :
-            command = "insert into linebot_test(line_id,products_name,quantity) values('{:s}','{:s}','{:d}');".format(m,"水晶餃",j)
-            mycursor.execute(command)
-            connection.commit()
-    elif k!=0 :
-            command = "insert into linebot_test(line_id,products_name,quantity) values('{:s}','{:s}','{:d}');".format(m,"小熱狗",k)
-            mycursor.execute(command)
-            connection.commit()
-    elif l!=0 :
-            command = "insert into linebot_test(line_id,products_name,quantity) values('{:s}','{:s}','{:d}');".format(m,"米腸",l)
-            mycursor.execute(command)
-            connection.commit()
+    if c != 0:
+        command = "insert into linebot_test(line_id,products_name,quantity) values('{:s}','{:s}','{:d}');".format(userID, "甜不辣", c)
+        mycursor.execute(command)
+        connection.commit()
+    if d != 0:
+        command = "insert into linebot_test(line_id,products_name,quantity) values('{:s}','{:s}','{:d}');".format(userID, "海帶", d)
+        mycursor.execute(command)
+        connection.commit()
+    if e != 0:
+        command = "insert into linebot_test(line_id,products_name,quantity) values('{:s}','{:s}','{:d}');".format(userID, "米血", e)
+        mycursor.execute(command)
+        connection.commit()
+    if f != 0:
+        command = "insert into linebot_test(line_id,products_name,quantity) values('{:s}','{:s}','{:d}');".format(userID, "大豆干", f)
+        mycursor.execute(command)
+        connection.commit()
+    if g != 0:
+        command = "insert into linebot_test(line_id,products_name,quantity) values('{:s}','{:s}','{:d}');".format(userID, "鴨心", g)
+        mycursor.execute(command)
+        connection.commit()
+    if h != 0:
+        command = "insert into linebot_test(line_id,products_name,quantity) values('{:s}','{:s}','{:d}');".format(userID, "鴨珍", h)
+        mycursor.execute(command)
+        connection.commit()
+    if i != 0:
+        command = "insert into linebot_test(line_id,products_name,quantity) values('{:s}','{:s}','{:d}');".format(userID, "豆皮", i)
+        mycursor.execute(command)
+        connection.commit()
+    if j != 0:
+        command = "insert into linebot_test(line_id,products_name,quantity) values('{:s}','{:s}','{:d}');".format(userID, "水晶餃", j)
+        mycursor.execute(command)
+        connection.commit()
+    if k != 0:
+        command = "insert into linebot_test(line_id,products_name,quantity) values('{:s}','{:s}','{:d}');".format(userID, "小熱狗", k)
+        mycursor.execute(command)
+        connection.commit()
+    if l != 0:
+        command = "insert into linebot_test(line_id,products_name,quantity) values('{:s}','{:s}','{:d}');".format(userID, "米腸", l)
+        mycursor.execute(command)
+        connection.commit()
 if __name__ == "__main__":
     app.debug = True
     app.run()
