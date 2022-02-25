@@ -709,8 +709,35 @@ def line_login():
             # pictureURL = content["pictureUrl"]
             # statusMessage = content["statusMessage"]
             print(content)
+            if request.method == 'POST':
+                c = request.form.get('c')
+                d = request.form.get('d')
+                e = request.form.get('e')
+                f = request.form.get('f')
+                g = request.form.get('g')
+                h = request.form.get('h')
+                i = request.form.get('i')
+                j = request.form.get('j')
+                k = request.form.get('k')
+                l = request.form.get('l')
+                # m = request.form.get('m')
+                c = int(c);
+                d = int(d);
+                e = int(e);
+                f = int(f);
+                g = int(g);
+                h = int(h);
+                i = int(i);
+                j = int(j);
+                k = int(k);
+                l = int(l);
+                # m = int(m)
 
-            return redirect(f'https://student04.herokuapp.com/shoppingcar')
+                money = c * 10 + d * 10 + e * 20 + f * 20 + g * 10 + h * 30 + i * 20 + j * 5 + k * 10 + l * 20
+                calorie = c * 210 + d * 8 + e * 194 + f * 192 + g * 154 + h * 202 + i * 199 + j * 180 + k * 226 + l * 221
+                gotoboss(c, d, e, f, g, h, i, j, k, l, userID)
+                return render_template('car.html', money=money, calorie=calorie)
+            return render_template('try.html')
         else:
             return redirect(f'https://access.line.me/oauth2/v2.1/authorize?response_type=code&client_id={line_login_id}&redirect_uri={end_point}/line_login&scope=profile%20openid%20email&state=123453sdfgfd')
 
