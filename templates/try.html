@@ -11,6 +11,16 @@
         <div>
             <script src="https://student04.herokuapp.com/static/model.js"></script>
             <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
+            <script> function Auth() {
+                var URL = 'https://access.line.me/oauth2/v2.1/authorize?';
+                URL += 'response_type=code';
+                URL += '&client_id={{client_id}}';  //請換成你自己的 client_id
+                URL += '&redirect_uri={{end_point}}/shoppingcar'; //請換成你自己的 callback url
+                URL += '&scope=profile%20openid%20email';
+                URL += '&state=123453sdfgfd';
+                //導引到LineLogin
+                window.location.href = URL; }
+            </script>
             <script>
                 function initializeLiff() {
                     liff.init({liffId: '1656880552-mzJQQEzw'}) 
@@ -108,7 +118,7 @@
                         <td><input id="cliv" type="button"  value="查詢" onclick="abc()" style="width:120px;height:40px;font-size:20px;background: #1E90FF;color: white"></td>
                         <td>價格 : <output id="result_one" style="font-size:20px"></output>
                             <br>熱量 : <output id="result_two" style="font-size:20px"></output>
-                            <br>會員號碼 : <input required type="text" name="m" id="m" style="width: 50px; height: 30px ;font-size:20px ;">
+                            <br>會員號碼 : <input required type="text" name="m" style="width: 50px; height: 30px ;font-size:20px ;">
                             <br> <button type="submit" style="width:120px;height:40px;font-size:20px;background: #1E90FF;color: white">結帳</button>
                         
                             
