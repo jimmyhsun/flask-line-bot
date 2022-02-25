@@ -744,16 +744,26 @@ def submit():
         j = request.form.get('j')
         k = request.form.get('k')
         l = request.form.get('l')
-        m = request.form.get('m')
-        c=int(c);d=int(d);e=int(e);f=int(f);g=int(g);h=int(h);i=int(i);j=int(j);k=int(k);l=int(l);m = int(m)
+        # m = request.form.get('m')
+        c = int(c);
+        d = int(d);
+        e = int(e);
+        f = int(f);
+        g = int(g);
+        h = int(h);
+        i = int(i);
+        j = int(j);
+        k = int(k);
+        l = int(l);
+        # m = int(m)
 
-        money = c*10 + d*10 +e*20+f*20+g*10+h*30+i*20+j*5+k*10+l*20
-        calorie = c*210+d*8+e*194+f*192+g*154+h*202+i*199+j*180+k*226+l*221
-        gotoboss(c,d,e,f,g,h,i,j,k,l,m)
-        return render_template('car.html',money=money,calorie=calorie)
+        money = c * 10 + d * 10 + e * 20 + f * 20 + g * 10 + h * 30 + i * 20 + j * 5 + k * 10 + l * 20
+        calorie = c * 210 + d * 8 + e * 194 + f * 192 + g * 154 + h * 202 + i * 199 + j * 180 + k * 226 + l * 221
+        gotoboss(c,d,e,f,g,h,i,j,k,l)
+        return render_template('car.html', money=money, calorie=calorie)
     return render_template('try.html')
 
-def gotoboss(c,d,e,f,g,h,i,j,k,l,m) :
+def gotoboss(c,d,e,f,g,h,i,j,k,l) :
     # assd=[c,d,e,f,g,h,i,j,k,l]
 
     connection = mysql.connector.connect(host="35.221.178.251",
@@ -761,45 +771,59 @@ def gotoboss(c,d,e,f,g,h,i,j,k,l,m) :
                                          user="root",
                                          password="cfi10202")
     mycursor = connection.cursor()
-   
+    code = request.args.get("code", None)
+    HEADERS = {'Content-Type': 'application/x-www-form-urlencoded'}
+    url = "https://api.line.me/oauth2/v2.1/token"
+    FormData = {"grant_type": 'authorization_code', "code": code, "redirect_uri": F"{end_point}/line_login",
+                "client_id": line_login_id, "client_secret": line_login_secret}
+    data = parse.urlencode(FormData)
+    content = requests.post(url=url, headers=HEADERS, data=data).text
+    content = json.loads(content)
+    url = "https://api.line.me/v2/profile"
+    HEADERS = {'Authorization': content["token_type"] + " " + content["access_token"]}
+    content = requests.get(url=url, headers=HEADERS).text
+    content = json.loads(content)
+    userID = content["userId"]
+    print(content)
+    
     if c !=0 :
-            command = "insert into linebot_test(line_id,products_name,quantity) values('{:d}','{:s}','{:d}');".format(m, "甜不辣",c)
+            command = "insert into linebot_test(line_id,products_name,quantity) values('{:s}','{:s}','{:d}');".format(userID, "甜不辣",c)
             mycursor.execute(command)
             connection.commit()
     if d!=0 :
-            command = "insert into linebot_test(line_id,products_name,quantity) values('{:d}','{:s}','{:d}');".format(m, "海帶",d)
+            command = "insert into linebot_test(line_id,products_name,quantity) values('{:s}','{:s}','{:d}');".format(userID, "海帶",d)
             mycursor.execute(command)
             connection.commit()
     if e!=0 :
-            command = "insert into linebot_test(line_id,products_name,quantity) values('{:d}','{:s}','{:d}');".format(m, "米血",e)
+            command = "insert into linebot_test(line_id,products_name,quantity) values('{:s}','{:s}','{:d}');".format(userID, "米血",e)
             mycursor.execute(command)
             connection.commit()
-    if f!=0 :
-            command = "insert into linebot_test(line_id,products_name,quantity) values('{:d}','{:s}','{:d}');".format(m, "大豆干",f)
+    elif f!=0 :
+            command = "insert into linebot_test(line_id,products_name,quantity) values('{:s}','{:s}','{:d}');".format(userID, "大豆干",f)
             mycursor.execute(command)
             connection.commit()
-    if g!=0 :
-            command = "insert into linebot_test(line_id,products_name,quantity) values('{:d}','{:s}','{:d}');".format(m,"鴨心",g)
+    elif g!=0 :
+            command = "insert into linebot_test(line_id,products_name,quantity) values('{:s}','{:s}','{:d}');".format(userID,"鴨心",g)
             mycursor.execute(command)
             connection.commit()
-    if h!=0 :
-            command = "insert into linebot_test(line_id,products_name,quantity) values('{:d}','{:s}','{:d}');".format(m,"鴨珍",h)
+    elif h!=0 :
+            command = "insert into linebot_test(line_id,products_name,quantity) values('{:s}','{:s}','{:d}');".format(userID,"鴨珍",h)
             mycursor.execute(command)
             connection.commit()
-    if i!=0 :
-            command = "insert into linebot_test(line_id,products_name,quantity) values('{:d}','{:s}','{:d}');".format(m,"豆皮",i)
+    elif i!=0 :
+            command = "insert into linebot_test(line_id,products_name,quantity) values('{:s}','{:s}','{:d}');".format(userID,"豆皮",i)
             mycursor.execute(command)
             connection.commit()
-    if j!=0 :
-            command = "insert into linebot_test(line_id,products_name,quantity) values('{:d}','{:s}','{:d}');".format(m,"水晶餃",j)
+    elif j!=0 :
+            command = "insert into linebot_test(line_id,products_name,quantity) values('{:s}','{:s}','{:d}');".format(userID,"水晶餃",j)
             mycursor.execute(command)
             connection.commit()
-    if k!=0 :
-            command = "insert into linebot_test(line_id,products_name,quantity) values('{:d}','{:s}','{:d}');".format(m,"小熱狗",k)
+    elif k!=0 :
+            command = "insert into linebot_test(line_id,products_name,quantity) values('{:s}','{:s}','{:d}');".format(userID,"小熱狗",k)
             mycursor.execute(command)
             connection.commit()
-    if l!=0 :
-            command = "insert into linebot_test(line_id,products_name,quantity) values('{:d}','{:s}','{:d}');".format(m,"米腸",l)
+    elif l!=0 :
+            command = "insert into linebot_test(line_id,products_name,quantity) values('{:s}','{:s}','{:d}');".format(userID,"米腸",l)
             mycursor.execute(command)
             connection.commit()
 if __name__ == "__main__":
