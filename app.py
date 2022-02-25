@@ -733,27 +733,7 @@ def line_login():
 
 @app.route("/shoppingcar", methods=['GET', 'POST'])
 def submit():
-    if request.method == 'GET':
-        code = request.args.get("code", None)
-        state = request.args.get("state", None)
-        if code and state:
-            HEADERS = {'Content-Type': 'application/x-www-form-urlencoded'}
-            url = "https://api.line.me/oauth2/v2.1/token"
-            FormData = {"grant_type": 'authorization_code', "code": code,
-                            "redirect_uri": F"{end_point}/shoppingcar",
-                            "client_id": line_login_id, "client_secret": line_login_secret}
-            data = parse.urlencode(FormData)
-
-            content = requests.post(url=url, headers=HEADERS, data=data).text
-            content = json.loads(content)
-
-            url = "https://api.line.me/v2/profile"
-            HEADERS = {'Authorization': content["token_type"] + " " + content["access_token"]}
-            content = requests.get(url=url, headers=HEADERS).text
-            content = json.loads(content)
-            userID = content["userId"]
-            print(content)
-            if request.method == 'POST':
+        if request.method == 'POST':
 
                     c = request.form.get('c')
                     d = request.form.get('d')
@@ -780,10 +760,9 @@ def submit():
 
                     money = c * 10 + d * 10 + e * 20 + f * 20 + g * 10 + h * 30 + i * 20 + j * 5 + k * 10 + l * 20
                     calorie = c * 210 + d * 8 + e * 194 + f * 192 + g * 154 + h * 202 + i * 199 + j * 180 + k * 226 + l * 221
-                    gotoboss(c,d,e,f,g,h,i,j,k,l,userID)
+                    gotoboss(c,d,e,f,g,h,i,j,k,l)
                     return render_template('car.html', money=money, calorie=calorie)
-        else: return render_template('try.html',client_id=line_login_id,
-                                   end_point=end_point)
+        else: return render_template('try.html')
 
 def gotoboss(c,d,e,f,g,h,i,j,k,l,userID) :
     # assd=[c,d,e,f,g,h,i,j,k,l]
@@ -795,21 +774,7 @@ def gotoboss(c,d,e,f,g,h,i,j,k,l,userID) :
 
     mycursor = connection.cursor()
 
-    # HEADERS = {'Content-Type': 'application/x-www-form-urlencoded'}
-    # url = "https://api.line.me/oauth2/v2.1/token"
-    # FormData = {"grant_type": 'authorization_code', "code": code, "redirect_uri": F"{end_point}/shoppingcar",
-    #             "client_id": line_login_id, "client_secret": line_login_secret}
-    # data = parse.urlencode(FormData)
-    #
-    # content = requests.post(url=url, headers=HEADERS, data=data).text
-    # content = json.loads(content)
-    #
-    # url = "https://api.line.me/v2/profile"
-    # HEADERS = {'Authorization': content["token_type"] + " " + content["access_token"]}
-    # content = requests.get(url=url, headers=HEADERS).text
-    # content = json.loads(content)
-    # userID = content["userId"]
-    # print(content)
+
 
     if c !=0 :
             command = "insert into linebot_test(line_id,products_name,quantity) values('{:s}','{:s}','{:d}');".format(userID, "甜不辣",c)
