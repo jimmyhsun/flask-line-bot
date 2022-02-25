@@ -774,7 +774,7 @@ def gotoboss(c,d,e,f,g,h,i,j,k,l) :
     code = request.args.get("code", None)
     HEADERS = {'Content-Type': 'application/x-www-form-urlencoded'}
     url = "https://api.line.me/oauth2/v2.1/token"
-    FormData = {"grant_type": 'authorization_code', "code": code, "redirect_uri": F"{end_point}/line_login",
+    FormData = {"grant_type": 'authorization_code', "code": code, "redirect_uri": F"{end_point}/shoppingcar",
                 "client_id": line_login_id, "client_secret": line_login_secret}
     data = parse.urlencode(FormData)
     content = requests.post(url=url, headers=HEADERS, data=data).text
