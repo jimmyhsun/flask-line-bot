@@ -197,7 +197,7 @@ def member():
 def getNameEmojiMessage():
     one = {"type": "bubble",
            "hero": {"type": "image",
-                    "url": "https://student04.herokuapp.com/static/one.jpg",
+                    "url": "https://student04.herokuapp.com/static/eleven.jpg",
                     "size": "full", "aspectRatio": "15:13", "aspectMode": "cover"},
            "body": {"type": "box", "layout": "vertical", "spacing": "md",
                     "contents": [{"type": "text","text": "甜不辣","size": "3xl","weight": "bold"},
@@ -221,7 +221,7 @@ def getNameEmojiMessage():
 
     two = {"type": "bubble",
            "hero": {"type": "image",
-                    "url": "https://student04.herokuapp.com/static/two.jpg",
+                    "url": "https://student04.herokuapp.com/static/qoo.jpg",
                     "size": "full", "aspectRatio": "15:13", "aspectMode": "cover"},
            "body": {"type": "box", "layout": "vertical", "spacing": "md",
                     "contents": [{"type": "text","text": "海帶","size": "3xl","weight": "bold"},
@@ -711,7 +711,7 @@ def line_login():
 
             return redirect(f'https://student04.herokuapp.com/shoppingcar')
         else:
-            return redirect(f'https://access.line.me/oauth2/v2.1/authorize?response_type=code&client_id={line_login_id}&redirect_uri={end_point}/shoppingcar&scope=profile%20openid%20email&state=123453sdfgfd')
+            return redirect(f'https://access.line.me/oauth2/v2.1/authorize?response_type=code&client_id={line_login_id}&redirect_uri={end_point}/line_login&scope=profile%20openid%20email&state=123453sdfgfd')
 
 
 @app.route("/shoppingcar", methods=['GET', 'POST'])
