@@ -685,7 +685,7 @@ def upload_file():
     return 'OK'
 
 
-@app.route('/line_login', methods=['GET'])
+@app.route('/line_login', methods=['GET',"POST"])
 def line_login():
     global userID
     if request.method == 'GET':
