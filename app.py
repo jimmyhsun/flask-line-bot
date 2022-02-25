@@ -763,43 +763,43 @@ def gotoboss(c,d,e,f,g,h,i,j,k,l,m) :
                                              password="cfi10202")
         mycursor = connection.cursor()
         if c !=0 :
-            command = "insert into linebot_test(line_id,products_name,quantity) values('{:s}','{:s}','{:s}');".format(m, "甜不辣",i)
+            command = "insert into linebot_test(line_id,products_name,quantity) values('{:d}','{:s}','{:d}');".format(m, "甜不辣",i)
             mycursor.execute(command)
             connection.commit()
         elif d!=0 :
-            command = "insert into linebot_test(line_id,products_name,quantity) values('{:s}','{:s}','{:s}');".format(m, "海帶",i)
+            command = "insert into linebot_test(line_id,products_name,quantity) values('{:d}','{:s}','{:d}');".format(m, "海帶",i)
             mycursor.execute(command)
             connection.commit()
         elif e!=0 :
-            command = "insert into linebot_test(line_id,products_name,quantity) values('{:s}','{:s}','{:s}');".format(m, "米血",i)
+            command = "insert into linebot_test(line_id,products_name,quantity) values('{:d}','{:s}','{:d}');".format(m, "米血",i)
             mycursor.execute(command)
             connection.commit()
         elif f!=0 :
-            command = "insert into linebot_test(line_id,products_name,quantity) values('{:s}','{:s}','{:s}');".format(m, "大豆干",i)
+            command = "insert into linebot_test(line_id,products_name,quantity) values('{:d}','{:s}','{:d}');".format(m, "大豆干",i)
             mycursor.execute(command)
             connection.commit()
         elif g!=0 :
-            command = "insert into linebot_test(line_id,products_name,quantity) values('{:s}','{:s}','{:s}');".format(m,"鴨心",i)
+            command = "insert into linebot_test(line_id,products_name,quantity) values('{:d}','{:s}','{:d}');".format(m,"鴨心",i)
             mycursor.execute(command)
             connection.commit()
         elif h!=0 :
-            command = "insert into linebot_test(line_id,products_name,quantity) values('{:s}','{:s}','{:s}');".format(m,"鴨珍",i)
+            command = "insert into linebot_test(line_id,products_name,quantity) values('{:d}','{:s}','{:d}');".format(m,"鴨珍",i)
             mycursor.execute(command)
             connection.commit()
         elif i!=0 :
-            command = "insert into linebot_test(line_id,products_name,quantity) values('{:s}','{:s}','{:s}');".format(m,"豆皮",i)
+            command = "insert into linebot_test(line_id,products_name,quantity) values('{:d}','{:s}','{:d}');".format(m,"豆皮",i)
             mycursor.execute(command)
             connection.commit()
         elif j!=0 :
-            command = "insert into linebot_test(line_id,products_name,quantity) values('{:s}','{:s}','{:s}');".format(m,"水晶餃",i)
+            command = "insert into linebot_test(line_id,products_name,quantity) values('{:d}','{:s}','{:d}');".format(m,"水晶餃",i)
             mycursor.execute(command)
             connection.commit()
         elif k!=0 :
-            command = "insert into linebot_test(line_id,products_name,quantity) values('{:s}','{:s}','{:s}');".format(m,"小熱狗",i)
+            command = "insert into linebot_test(line_id,products_name,quantity) values('{:d}','{:s}','{:d}');".format(m,"小熱狗",i)
             mycursor.execute(command)
             connection.commit()
         elif l!=0 :
-            command = "insert into linebot_test(line_id,products_name,quantity) values('{:s}','{:s}','{:s}');".format(m,"米腸",i)
+            command = "insert into linebot_test(line_id,products_name,quantity) values('{:d}','{:s}','{:d}');".format(m,"米腸",i)
             mycursor.execute(command)
             connection.commit()
 if __name__ == "__main__":
