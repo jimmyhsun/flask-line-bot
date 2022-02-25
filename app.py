@@ -250,7 +250,7 @@ def getNameEmojiMessage():
                                                      }]}]}]}}
     three = {"type": "bubble",
            "hero": {"type": "image",
-                    "url": "https://student04.herokuapp.com/static/two.jpg",
+                    "url": "https://student04.herokuapp.com/static/three.jpg",
                     "size": "full", "aspectRatio": "20:13", "aspectMode": "cover"},
            "body": {"type": "box", "layout": "vertical", "spacing": "md",
                     "contents": [{"type": "text",
@@ -282,7 +282,7 @@ def getNameEmojiMessage():
                                                      }]}]}]}}
     four = {"type": "bubble",
            "hero": {"type": "image",
-                    "url": "https://student04.herokuapp.com/static/quality.jpg",
+                    "url": "https://student04.herokuapp.com/static/four.jpg",
                     "size": "full", "aspectRatio": "20:13", "aspectMode": "cover"},
            "body": {"type": "box", "layout": "vertical", "spacing": "md",
                     "contents": [{"type": "text",
@@ -314,7 +314,7 @@ def getNameEmojiMessage():
                                                      }]}]}]}}
     five = {"type": "bubble",
            "hero": {"type": "image",
-                    "url": "https://student04.herokuapp.com/static/quality.jpg",
+                    "url": "https://student04.herokuapp.com/static/five.jpg",
                     "size": "full", "aspectRatio": "20:13", "aspectMode": "cover"},
            "body": {"type": "box", "layout": "vertical", "spacing": "md",
                     "contents": [{"type": "text",
@@ -346,7 +346,7 @@ def getNameEmojiMessage():
                                                      }]}]}]}}
     six = {"type": "bubble",
            "hero": {"type": "image",
-                    "url": "https://student04.herokuapp.com/static/quality.jpg",
+                    "url": "https://student04.herokuapp.com/static/six.jpg",
                     "size": "full", "aspectRatio": "20:13", "aspectMode": "cover"},
            "body": {"type": "box", "layout": "vertical", "spacing": "md",
                     "contents": [{"type": "text",
@@ -378,7 +378,7 @@ def getNameEmojiMessage():
                                                      }]}]}]}}
     seven = {"type": "bubble",
            "hero": {"type": "image",
-                    "url": "https://student04.herokuapp.com/static/quality.jpg",
+                    "url": "https://student04.herokuapp.com/static/seven.jpg",
                     "size": "full", "aspectRatio": "20:13", "aspectMode": "cover"},
            "body": {"type": "box", "layout": "vertical", "spacing": "md",
                     "contents": [{"type": "text",
@@ -410,7 +410,7 @@ def getNameEmojiMessage():
                                                      }]}]}]}}
     eight = {"type": "bubble",
            "hero": {"type": "image",
-                    "url": "https://student04.herokuapp.com/static/quality.jpg",
+                    "url": "https://student04.herokuapp.com/static/eight.jpg",
                     "size": "full", "aspectRatio": "20:13", "aspectMode": "cover"},
            "body": {"type": "box", "layout": "vertical", "spacing": "md",
                     "contents": [{"type": "text","text": "水晶餃","size": "3xl","weight": "bold"},
@@ -435,7 +435,7 @@ def getNameEmojiMessage():
                                                      }]}]}]}}
     nine = {"type": "bubble",
            "hero": {"type": "image",
-                    "url": "https://student04.herokuapp.com/static/quality.jpg",
+                    "url": "https://student04.herokuapp.com/static/nine.jpg",
                     "size": "full", "aspectRatio": "20:13", "aspectMode": "cover"},
            "body": {"type": "box", "layout": "vertical", "spacing": "md",
                     "contents": [{"type": "text","text": "小熱狗","size": "3xl","weight": "bold"},
@@ -462,7 +462,7 @@ def getNameEmojiMessage():
                                                      }]}]}]}}
     ten = {"type": "bubble",
             "hero": {"type": "image",
-                     "url": "https://student04.herokuapp.com/static/two.jpg",
+                     "url": "https://student04.herokuapp.com/static/ten.jpg",
                      "size": "full", "aspectRatio": "15:13", "aspectMode": "cover"},
             "body": {"type": "box", "layout": "vertical", "spacing": "md",
                      "contents": [{"type": "text", "text": "海帶", "size": "3xl", "weight": "bold"},
