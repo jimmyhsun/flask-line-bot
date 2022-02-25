@@ -753,7 +753,7 @@ def submit():
             content = json.loads(content)
             userID = content["userId"]
             print(content)
-            if request.method == 'POST':
+            if request.method == 'GET':
 
                     c = request.form.get('c')
                     d = request.form.get('d')
