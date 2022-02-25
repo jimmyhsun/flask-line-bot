@@ -1,5 +1,5 @@
 from __future__ import unicode_literals
-from flask import Flask, request, abort, render_template
+from flask import Flask, request, abort, render_template,redirect
 from linebot import LineBotApi, WebhookHandler
 from linebot.exceptions import InvalidSignatureError
 from linebot.models import MessageEvent, TextMessage, TextSendMessage
